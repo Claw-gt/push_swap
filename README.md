@@ -1,3 +1,6 @@
 # 42: Push Swap
-### Algorithm Usado
-Radix Sort
+
+### Algoritmo usado
+````
+| Radix Sort
+````

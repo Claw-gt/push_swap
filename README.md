@@ -1,1 +1,3 @@
-# git_push_swap
+# 42: Push Swap
+### Algorithm Usado
+Radix Sort

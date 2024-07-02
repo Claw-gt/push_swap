@@ -93,3 +93,11 @@ We could sort the list of words using this algorithm: stable sorting by column 5
 Now to answer your question, suppose we have a list of first and last names. We are asked to sort "by last name, then by first". We could first sort (stable or unstable) by the first name, then stable sort by the last name. After these sorts, the list is primarily sorted by the last name. However, where last names are the same, the first names are sorted.
 
 You can't stack unstable sorts in the same fashion.
+
+# Makefile
+
+Incluir librería libft.a y libftprintf.a
+
+`LDFLAGS= -L<Directory where the library resides> -l<library name>`
+
+-L flag tells **where** (the directory) to search the library

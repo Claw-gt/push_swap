@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/02 15:45:14 by clagarci         ###   ########.fr       */
+/*   Created: 2024/03/01 17:54:30 by clagarci          #+#    #+#             */
+/*   Updated: 2024/03/14 19:22:24 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "push_swap.h"
-#include <stdio.h>
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdarg.h>
+# include <unistd.h>
+# include <limits.h>
+# include <stdlib.h>
 
-int	main(int argc, char **argv)
-{
-	parse_input(argc,argv);
-	// if (argc > 1 && argc <= 100) //el número de args debe ser mayor que 1, pues el primero es el ejecutable
-	// {
-	// 	write(1, argv[1],3);
-	// 	//to_number(argc, argv);		
-	// 	//check_duplicates(argv);
-	// }
-	return (0);
-}
+int	ft_printf(char const *param, ...);
+
+int	ft_putchar(char c);
+
+int	ft_putstr(char *s);
+
+int	ft_putnbr_int(int n);
+
+int	ft_putnbr_uint(unsigned int n, char *base);
+
+int	ft_putnbr_lint(unsigned long int n);
+
+#endif

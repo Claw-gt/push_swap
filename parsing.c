@@ -6,13 +6,14 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:25:57 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/02 17:10:13 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/05 19:13:30 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "printf/ft_printf.h"
 #include <stdio.h>
+#include "push_swap.h"
 //int	check_spaces(char **argv)
 
 int	ft_atoi_optim(const char *nptr)
@@ -38,7 +39,7 @@ int	ft_atoi_optim(const char *nptr)
 		num += nptr[i] - '0';
 		i++;
 	}
-    if (nptr[i] != 32 && (nptr[i] < '0' || nptr[i] > '9'))
+    if (nptr[i] != ' ' && (nptr[i] < 9 || nptr[i] > 13) && nptr[i] != '\0')
 	{
         return (-1);
 	}
@@ -48,60 +49,75 @@ int	ft_atoi_optim(const char *nptr)
 	return (num);
 }
 
-// int *to_number(int argc, char **argv)
-// {
-// 	int i;
-//     int j;
-//     int *num_array;
-
-//     j = 0;
-// 	i = 0;
-//     num_array = (int *)malloc(sizeof(int) * (argc - 1));
-//     if (num_array == NULL)
-// 	{
-//         return (NULL);
-// 	}
-// 	while (i++ < argc)
-// 	{
-//         write(1, argv[i], sizeof(argv[i]));
-// 		num_array[j] = ft_atoi(argv[i]);
-// 	}
-// 	return (num_array);
-// }
-
 void	*print_errors(void)
 {
-    //ft_printf("Error\n");
-	printf("Error\n");
+    ft_printf("Error\n");
+	//printf("Error\n");
 	return (NULL);
 }
 
-void	*parse_input (int argc, char *argv[])
+int	check_duplicates(int *array)
+{
+	/*Iterar por initial_array y comprobar que no haya ningún número duplicado*/
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 1;
+	while (array[i] != '\0')
+	{
+		while (array[j] != '\0')
+		{
+			if (array[i] == array[j])
+				return (-1);
+			j++;
+		}
+		i++;
+	}
+    return (0);
+}
+
+int	*parse_input (int argc, char *argv[])
 {
 	int	i;
-	//int	j;
-
-	//j = 0;
+	int	*initial_array;
+	int	pos;
+	//t_list stack_a;
+	
+	pos = 0;
 	i = 1;
+	//stack_a = NULL;
     if (argc < 2)
         print_errors();
     else
 	{
 		/*Comprobar que los argumentos sean números enteros no mezclados con letras. Atoi optimizado*/
-		printf("num args: %d\n", argc);
+		//printf("num args: %d\n", argc);
+		initial_array = (int*)malloc(sizeof(int) * argc);
+		if (!initial_array)
+			return (NULL);
 		while (i < argc)
 		{
-			printf("args:%s",argv[i]);
+			printf("args:%s\n",argv[i]);
 			/*Comprobar primero que los argumentos solo incluyan '"' " " '-' '+' o números?*/
-			if (ft_atoi_optim(argv[i]) == -1)
+			initial_array[pos] = ft_atoi_optim(argv[i]);
+			if (initial_array[pos] == -1)
+			{
+				free (initial_array);
 				return (print_errors());
+			}
+			else
+			{
+				//chequea duplicados sin haber pasado todos los argumentos a número para mandar el Error cuanto antes
+				if (check_duplicates(initial_array) == -1)
+				{
+					free (initial_array);
+					return(print_errors());
+				}	
+			}
 			i++;
+			pos++;
 		}
 	}
-	return (0);
-}
-
-int	check_duplicates()
-{
-    return (0);
+	return (initial_array);
 }

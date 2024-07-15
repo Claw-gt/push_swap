@@ -96,8 +96,50 @@ You can't stack unstable sorts in the same fashion.
 
 # Makefile
 
+### Regla .c.o:
+Any defined implicit rule suffix also counts as a special target if it appears as a target, and so does the concatenation of two suffixes, such as **‘.c.o’**. These targets are suffix rules, an obsolete way of defining implicit rules (but a way still widely used). In principle, any target name could be special in this way if you break it in two and add both pieces to the suffix list. In practice, suffixes normally begin with ‘.’, so these special target names also begin with ‘.’. 
+A two-suffix rule ‘.c.o’ (whose target and source suffixes are ‘.o’ and ‘.c’) is equivalent to the pattern rule ‘%.o : %.c’.
+
+#### $<
+Often the prerequisites include header files as well, which you do not want to mention in the recipe. The automatic variable **‘$<’** is just the first prerequisite:
+
+`VPATH = src:../headers`
+`foo.o : foo.c defs.h hack.h`
+        `cc -c $(CFLAGS) $< -o $@`
+
+#### $@
+Similar recipes work for all the targets. The automatic variable ‘$@’ can be used to substitute the particular target to be remade into the commands (see Automatic Variables). For example:
+
+`bigoutput littleoutput : text.g`
+        `generate text.g -$(subst output,,$@) > $@`
+is equivalent to
+
+`bigoutput : text.g`
+        `generate text.g -big > bigoutput`
+`littleoutput : text.g`
+        `generate text.g -little > littleoutput`
+
+### Incluir otras librerías
+
 Incluir librería libft.a y libftprintf.a
 
 `LDFLAGS= -L<Directory where the library resides> -l<library name>`
 
 -L flag tells **where** (the directory) to search the library
+
+LIBS = -l:libft.a -l:libftprintf.a
+
+`$(NAME): $(MY_OBJECTS)`
+		make -C libft
+		make -C printf
+		$(CC) $(CFLAGS) $(MY_OBJECTS) -o $(NAME) $(LDFLAGS) $(LIBS)
+		@echo "\n Compilation of $(NAME):  $(GREEN)SUCCESS!"
+
+Explanation
+
+- **CC**: The compiler to use (e.g., `gcc`).
+- **CFLAGS**: Compiler flags, including the path to your library's headers (`I/usr/local/include`).
+- **LDFLAGS**: Linker flags, including the path to your library's archive or shared object (`L/usr/local/lib`).
+- **LIBS**: Libraries to link against, specified with `l`. For `libmylibrary.a` or `libmylibrary.so`, use `lmylibrary`.
+
+*Nota: si la librería no empieza por **lib…**, se puede usar -l**:**mylibrary**.a***

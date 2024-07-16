@@ -6,21 +6,33 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/15 18:02:12 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/16 19:40:12 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
+void process_stack(t_stack **stack_a, int *initial_array)
+{
+	int i;
+
+	i = 0;
+	while (initial_array[i] != '\0')
+	{
+		ft_lstadd_back(stack_a, ft_lstnew(initial_array[i]));
+		i++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
-	parse_input(argc,argv);
-	// if (argc > 1 && argc <= 100) //el número de args debe ser mayor que 1, pues el primero es el ejecutable
-	// {
-	// 	write(1, argv[1],3);
-	// 	//to_number(argc, argv);		
-	// 	//check_duplicates(argv);
-	// }
+	t_stack	**stack_a;
+	int		*initial_array;
+
+	initial_array = parse_input(argc,argv);
+	if (initial_array == NULL)
+		return (1);
+	process_stack(stack_a, initial_array);
 	return (0);
 }

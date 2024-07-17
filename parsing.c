@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:25:57 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/17 18:18:51 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:20:49 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,20 +107,21 @@ int	*parse_input (int argc, char *argv[])
 			else
 			{
 				//chequea duplicados sin haber pasado todos los argumentos a número para mandar el Error cuanto antes
-				// if (check_duplicates(initial_array) == -1)
-				// {
-				// 	free (initial_array);
-				// 	return(print_errors());
-				// }	
+				if (check_duplicates(initial_array, argc) == -1)
+				{
+					free (initial_array);
+					return(print_errors());
+				}	
 			}
 			i++;
 			pos++;
 		}
 	}
-	if (check_duplicates(initial_array, argc) == -1)
-	{
-		free (initial_array);
-		return(print_errors());
-	}
+	//chequear dspués de guardar todos los números en el array de enteros?
+	// if (check_duplicates(initial_array, argc) == -1)
+	// {
+	// 	free (initial_array);
+	// 	return(print_errors());
+	// }
 	return (initial_array);
 }

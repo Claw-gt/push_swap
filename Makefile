@@ -6,7 +6,7 @@
 #    By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 19:23:32 by clagarci          #+#    #+#              #
-#    Updated: 2024/07/17 17:51:18 by clagarci         ###   ########.fr        #
+#    Updated: 2024/07/17 17:54:33 by clagarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ all: $(NAME)
 
 $(NAME): $(MY_OBJECTS)
 		make -C $(LIBDIR)
+		make bonus -C $(LIBDIR)
 		$(CC) $(CFLAGS) $(MY_OBJECTS) -o $(NAME) $(LDFLAGS) $(LIBS)
 		@echo "\n Compilation of $(NAME):  $(GREEN)SUCCESS!"
 

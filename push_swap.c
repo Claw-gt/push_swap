@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/17 16:59:14 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:08:27 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ t_list **process_stack(t_list **stack_a, int *initial_array)
 
 int	main(int argc, char **argv)
 {
-	t_list	**stack_a;
+	//t_list	**stack_a;
 	int		*initial_array;
 
 	initial_array = parse_input(argc,argv);
 	if (initial_array == NULL)
 		return (1);
-	stack_a = NULL;
-	stack_a = process_stack(stack_a, initial_array);
+	//stack_a = NULL;
+	//stack_a = process_stack(stack_a, initial_array);
+	free (initial_array);
 	return (0);
 }

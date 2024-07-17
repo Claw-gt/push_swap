@@ -6,7 +6,7 @@
 #    By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 19:23:32 by clagarci          #+#    #+#              #
-#    Updated: 2024/07/17 17:54:33 by clagarci         ###   ########.fr        #
+#    Updated: 2024/07/17 18:00:47 by clagarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MY_SOURCES = push_swap.c parsing.c operations/push.c operations/swap.c operation
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
 CC = gcc
-CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -Wall -Wextra -Werror -fsanitize=address
 #CFLAGS += -I./libft #for specifying the directory of *.h header file
 LDFLAGS = -L ./libft #for specifying the directory to be used for -l
 

@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:25:57 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/17 16:52:57 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:18:51 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	*print_errors(void)
 	return (NULL);
 }
 
-int	check_duplicates(int *array)
+int	check_duplicates(int *array, int argc)
 {
 	/*Iterar por initial_array y comprobar que no haya ningún número duplicado*/
 	int	i;
@@ -61,9 +61,9 @@ int	check_duplicates(int *array)
 
 	i = 0;
 	j = 1;
-	while (array[i] != '\0')
+	while (i < (argc - 2))
 	{
-		while (array[j] != '\0')
+		while (j < (argc - 1))
 		{
 			if (array[i] == array[j])
 				return (-1);
@@ -98,6 +98,7 @@ int	*parse_input (int argc, char *argv[])
 			printf("args:%s\n",argv[i]);
 			/*Comprobar primero que los argumentos solo incluyan '"' " " '-' '+' o números?*/
 			initial_array[pos] = ft_atoi_optim(argv[i]);
+			//printf("array:%d\n",initial_array[pos]);
 			if (initial_array[pos] == -1)
 			{
 				free (initial_array);
@@ -106,15 +107,20 @@ int	*parse_input (int argc, char *argv[])
 			else
 			{
 				//chequea duplicados sin haber pasado todos los argumentos a número para mandar el Error cuanto antes
-				if (check_duplicates(initial_array) == -1)
-				{
-					free (initial_array);
-					return(print_errors());
-				}	
+				// if (check_duplicates(initial_array) == -1)
+				// {
+				// 	free (initial_array);
+				// 	return(print_errors());
+				// }	
 			}
 			i++;
 			pos++;
 		}
+	}
+	if (check_duplicates(initial_array, argc) == -1)
+	{
+		free (initial_array);
+		return(print_errors());
 	}
 	return (initial_array);
 }

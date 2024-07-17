@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/15 18:50:04 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:45:12 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,40 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 # include "libft/libft.h"
-
-typedef struct s_stack
-{
-    int	*content;
-	struct s_stack	*next;
-    struct s_stack  *prev;
-}	t_stack;
 
 int to_number(int argc, char **argv);
 
 int *parse_input (int argc, char *argv[]);
 
 int	check_duplicates(int *array);
+
+void sa(t_list **stack_a);
+
+void sb(t_list **stack_b);
+
+void ss(t_list **stack_a, t_list **stack_b);
+
+void pa(t_list **stack_a, t_list **stack_b);
+
+void pb(t_list **stack_a, t_list **stack_b);
+
+void ra(t_list **stack_a);
+
+void rb(t_list **stack_b);
+
+void rr(t_list **stack_a, t_list **stack_b);
+
+void rra(t_list **stack_a);
+
+void rrb(t_list **stack_b);
+
+void rrr(t_list **stack_a, t_list **stack_b);
+
+t_list	*ft_lstnew(void *content);
+
+t_list	*ft_lstlast(t_list *lst);
+
+void	ft_lstadd_back(t_list **lst, t_list *new);
 #endif

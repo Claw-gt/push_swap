@@ -6,15 +6,11 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:25:57 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/05 19:13:30 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/17 16:52:57 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "printf/ft_printf.h"
-#include <stdio.h>
 #include "push_swap.h"
-//int	check_spaces(char **argv)
 
 int	ft_atoi_optim(const char *nptr)
 {
@@ -51,8 +47,9 @@ int	ft_atoi_optim(const char *nptr)
 
 void	*print_errors(void)
 {
-    ft_printf("Error\n");
+    //ft_printf("Error\n");
 	//printf("Error\n");
+	write(1, "Error\n", 6);
 	return (NULL);
 }
 

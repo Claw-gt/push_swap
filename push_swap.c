@@ -6,7 +6,7 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/18 14:12:58 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:17:35 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,14 @@ t_stack *process_stack(t_stack **stack_a, int *initial_array, int argc)
 	while (i < (argc - 1))
 	{
 		ft_stckadd_back(stack_a, ft_stcknew(initial_array[i]));
+		//ft_lstadd_back(stack_a, ft_lstnew(&initial_array[i]));
 		i++;
 	}
 	//(*stack_a)->next = NULL;
 	t_stack *temp = *stack_a;
 	while(temp)
 	{
+		//printf("temp->content: %d\n", *(int *)temp->content);
 		printf("temp->content: %d\n", temp->content);
 		temp = temp->next;
 	}

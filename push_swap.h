@@ -6,7 +6,7 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/18 15:09:36 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:53:25 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,13 @@ int *parse_input (int argc, char *argv[]);
 
 int	check_duplicates(int *array, int argc);
 
-void stack_indexing(t_stack **stack);
+int partition(int *array, int low, int high);
+
+void quick_sort(int *array, int low, int high);
+
+int find_number(int *array, int number);
+
+void stack_indexing(t_stack **stack, int *array);
 
 void	ft_stckadd_back(t_stack **lst, t_stack *new);
 

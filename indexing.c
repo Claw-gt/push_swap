@@ -6,7 +6,7 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:30:53 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/18 15:38:46 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:53:54 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,11 @@ int find_number(int *array, int number)
 void stack_indexing(t_stack **stack, int *array)
 {
     t_stack *tmp;
-    int i;
 
-    i = 0;
     tmp = *stack;
     while (tmp)
     {
-		tmp->index = find_number(array, tmp->content, i);
+		tmp->index = find_number(array, tmp->content);
         tmp = tmp->next;
     }
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/17 18:17:29 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/18 13:43:47 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,21 @@
 # include <stdio.h>
 # include "libft/libft.h"
 
+typedef struct s_stack
+{
+	int			content;
+	struct s_stack	*next;
+}					t_stack;
+
 int to_number(int argc, char **argv);
 
 int *parse_input (int argc, char *argv[]);
 
 int	check_duplicates(int *array, int argc);
+
+void	ft_stckadd_back(t_stack **lst, t_stack *new);
+
+t_stack	*ft_stcknew(int content);
 
 void sa(t_list **stack_a);
 

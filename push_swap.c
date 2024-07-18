@@ -6,40 +6,11 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/18 14:17:35 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:33:05 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_stack	*ft_stcknew(int content)
-{
-	t_stack	*new_node;
-
-	new_node = (t_stack *)malloc(sizeof(t_stack));
-	if (!new_node)
-		return (NULL);
-	new_node->content = content;
-	new_node->next = NULL;
-	return (new_node);
-}
-
-void	ft_stckadd_back(t_stack **lst, t_stack *new)
-{
-	t_stack	*temp;
-
-	if (!lst || !new)
-		return ;
-	if (*lst == NULL)
-		*lst = new;
-	else
-	{
-		temp = *lst;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new;
-	}
-}
 
 t_stack *process_stack(t_stack **stack_a, int *initial_array, int argc)
 {
@@ -60,6 +31,7 @@ t_stack *process_stack(t_stack **stack_a, int *initial_array, int argc)
 		printf("temp->content: %d\n", temp->content);
 		temp = temp->next;
 	}
+	quick_sort(initial_array, 0, argc - 2);
 	return (*stack_a);
 }
 
@@ -82,6 +54,13 @@ int	main(int argc, char **argv)
 	//	return (1);
 	stack_a = NULL; //importante para evitar error con fsanitize
 	stack_a = process_stack(&stack_a, initial_array, argc);
+	t_stack *temp = stack_a;
+	while(temp)
+	{
+		//printf("temp->content: %d\n", *(int *)temp->content);
+		printf("temp->content: %d\n", temp->content);
+		temp = temp->next;
+	}
 	free (initial_array);
 	return (0);
 }

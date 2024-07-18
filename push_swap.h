@@ -6,20 +6,22 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/18 13:43:47 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:09:36 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdlib.h>
+# include <stddef.h>
 # include <unistd.h>
 # include <stdio.h>
 # include "libft/libft.h"
 
 typedef struct s_stack
 {
-	int			content;
+	int				content;
+	int				index;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -29,31 +31,35 @@ int *parse_input (int argc, char *argv[]);
 
 int	check_duplicates(int *array, int argc);
 
+void stack_indexing(t_stack **stack);
+
 void	ft_stckadd_back(t_stack **lst, t_stack *new);
 
 t_stack	*ft_stcknew(int content);
 
-void sa(t_list **stack_a);
+t_stack	*ft_stcklast(t_stack *lst);
 
-void sb(t_list **stack_b);
+void sa(t_stack **stack_a);
 
-void ss(t_list **stack_a, t_list **stack_b);
+void sb(t_stack **stack_b);
 
-void pa(t_list **stack_a, t_list **stack_b);
+void ss(t_stack **stack_a, t_stack **stack_b);
 
-void pb(t_list **stack_a, t_list **stack_b);
+void pa(t_stack **stack_a, t_stack **stack_b);
 
-void ra(t_list **stack_a);
+void pb(t_stack **stack_a, t_stack **stack_b);
 
-void rb(t_list **stack_b);
+void ra(t_stack **stack_a);
 
-void rr(t_list **stack_a, t_list **stack_b);
+void rb(t_stack **stack_b);
 
-void rra(t_list **stack_a);
+void rr(t_stack **stack_a, t_stack **stack_b);
 
-void rrb(t_list **stack_b);
+void rra(t_stack **stack_a);
 
-void rrr(t_list **stack_a, t_list **stack_b);
+void rrb(t_stack **stack_b);
+
+void rrr(t_stack **stack_a, t_stack **stack_b);
 
 t_list	*ft_lstnew(void *content);
 

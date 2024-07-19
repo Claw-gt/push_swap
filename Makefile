@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+         #
+#    By: clagarci <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 19:23:32 by clagarci          #+#    #+#              #
-#    Updated: 2024/07/17 18:00:47 by clagarci         ###   ########.fr        #
+#    Updated: 2024/07/19 16:44:25 by clagarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = push_swap
 LIBS = -lft #for the name of the *.a file. Here the "lib" prefix and ".a" extension is not mentioned
 LIBDIR = libft/
 
-MY_SOURCES = push_swap.c parsing.c operations/push.c operations/swap.c operations/rotate.c operations/reverse_rotate.c
+MY_SOURCES = push_swap.c parsing.c operations/push.c operations/swap.c operations/rotate.c operations/reverse_rotate.c \
+			linked_stacks.c indexing.c test.c
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

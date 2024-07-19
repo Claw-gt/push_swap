@@ -6,18 +6,18 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/18 15:57:48 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/19 17:23:50 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *process_stack(t_stack **stack_a, int *initial_array, int argc)
+t_stack *process_stack(t_stack **stack_a, int *initial_array, int arguments)
 {
 	int i;
 
 	i = 0;
-	while (i < (argc - 1))
+	while (i < arguments)
 	{
 		ft_stckadd_back(stack_a, ft_stcknew(initial_array[i]));
 		//ft_lstadd_back(stack_a, ft_lstnew(&initial_array[i]));
@@ -31,7 +31,7 @@ t_stack *process_stack(t_stack **stack_a, int *initial_array, int argc)
 		printf("temp->content: %d\n", temp->content);
 		temp = temp->next;
 	}
-	quick_sort(initial_array, 0, argc - 2);
+	quick_sort(initial_array, 0, arguments - 1);
 	stack_indexing(stack_a, initial_array);
 	t_stack *check = *stack_a;
 	while(check)
@@ -61,7 +61,8 @@ int	main(int argc, char **argv)
 	//if (!stack_a)
 	//	return (1);
 	stack_a = NULL; //importante para evitar error con fsanitize
-	stack_a = process_stack(&stack_a, initial_array, argc);
+	stack_a = process_stack(&stack_a, initial_array, argc - 1);
 	free (initial_array);
+	test(&stack_a);
 	return (0);
 }

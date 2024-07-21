@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/21 13:45:01 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/21 14:29:23 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,24 @@ t_stack *process_stack(t_stack **stack_a, int *initial_array, int arguments)
 	}
 	return (*stack_a);
 }
+int	initial_check(int argc, char **argv)
+{
+	int	total_args;
+
+	total_args = 0;
+	if (argc < 2)
+	{
+		print_errors();
+		return (-1);
+	}
+	total_args = count_and_check(argc - 1, argv);
+	if (total_args == -1)
+	{	
+		print_errors();
+		return (-1);
+	}
+	return (total_args);
+}
 
 int	main(int argc, char **argv)
 {
@@ -49,17 +67,9 @@ int	main(int argc, char **argv)
 	int		arguments;
 	int		*initial_array;
 
-	if (argc < 2)
-	{
-		print_errors();
-		return (1);
-	}
-	arguments = count_and_check(argc - 1, argv);
+	arguments = initial_check(argc, argv);
 	if (arguments == -1)
-	{	
-		print_errors();
 		return (1);
-	}
 	initial_array = parse_input(arguments, argc, argv);
 	if (initial_array == NULL)
 		return (1);

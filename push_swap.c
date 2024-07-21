@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/19 17:23:50 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/21 13:01:15 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,26 @@ t_stack *process_stack(t_stack **stack_a, int *initial_array, int arguments)
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
+	int		arguments;
 	int		*initial_array;
 
-	initial_array = parse_input(argc,argv);
+	if (argc < 2)
+	{
+		print_errors();
+		return (1);
+	}
+	arguments = count_arguments(argc - 1, argv);
+	initial_array = parse_input(arguments, argc, argv);
 	if (initial_array == NULL)
 		return (1);
 	int i = 0;
-	while (i < (argc - 1))
+	while (i < arguments)
 	{
-		printf("initial_array[%d]: %d\n", i, initial_array[i]);
+		printf("\ninitial_array[%d]: %d\n", i, initial_array[i]);
 		i++;
 	}
-	//stack_a = (t_stack **)malloc(sizeof(t_stack*));
-	//if (!stack_a)
-	//	return (1);
 	stack_a = NULL; //importante para evitar error con fsanitize
-	stack_a = process_stack(&stack_a, initial_array, argc - 1);
+	stack_a = process_stack(&stack_a, initial_array, arguments);
 	free (initial_array);
 	test(&stack_a);
 	return (0);

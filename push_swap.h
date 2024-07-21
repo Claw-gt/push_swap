@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/20 21:13:31 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/21 12:59:45 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-int to_number(int argc, char **argv);
+int	to_number(char **split_array, int num_args, int **int_array, int position);
 
-int *parse_input (int argc, char *argv[]);
+int	count_arguments(int num_args, char **argv);
 
-int	check_duplicates(int *array, int argc);
+void	*print_errors(void);
+
+int	*parse_input (int arguments, int argc, char *argv[]);
+
+int	check_duplicates(int *array, int arguments);
 
 int partition(int *array, int low, int high);
 

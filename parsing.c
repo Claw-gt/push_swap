@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:25:57 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/20 21:14:45 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/21 12:58:46 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	str_isdigit(char **string, int arguments)
 	return (0);
 }
 
-long int	ft_atoi_optim(const char *nptr)
+int	ft_atoi_optim(const char *nptr)
 {
 	int			i;
 	int			minus;
@@ -77,7 +77,7 @@ long int	ft_atoi_optim(const char *nptr)
 	if (num > INT_MAX || num < INT_MIN)
 		return (-1);
 	printf("num: %ld\n", num);
-	return (num);
+	return ((int)num);
 }
 
 void	*print_errors(void)
@@ -86,7 +86,7 @@ void	*print_errors(void)
 	return (NULL);
 }
 
-int	check_duplicates(int *array, int argc)
+int	check_duplicates(int *array, int arguments)
 {
 	/*Iterar por initial_array y comprobar que no haya ningún número duplicado*/
 	int	i;
@@ -94,9 +94,9 @@ int	check_duplicates(int *array, int argc)
 
 	i = 0;
 	j = 1;
-	while (i < (argc - 2))
+	while (i < arguments - 1)
 	{
-		while (j < (argc - 1))
+		while (j < arguments)
 		{
 			if (array[i] == array[j])
 				return (-1);
@@ -107,92 +107,172 @@ int	check_duplicates(int *array, int argc)
 	}
     return (0);
 }
+int	count_arguments(int num_args, char **argv)
+{
+	int		i;
+	int		arguments;
+	char	**temp;
+	int 	length;
 
-// int	*to_number(char **array, int arguments)
+	arguments = 0;
+	i = 0;
+	while (i++ < num_args)
+	{
+		length = 0;
+		temp = ft_split(argv[i], ' ');
+		while (temp[length] != NULL)
+			length++;
+		arguments += length;
+		free_array (temp, length);
+	}
+	return (arguments);
+}
+int	to_number(char **split_array, int num_args, int **int_array, int position) //paso por parámetro mi array
+{
+	int	i;
+
+	i = -1;
+	while(i++ < num_args)
+	{
+		*int_array[position] = ft_atoi_optim(split_array[i]);
+		if (*int_array[position] == -1)
+			return (-1);
+		position++;
+	}
+	return (0);
+}
+
+// int	*parse_input (int argc, char *argv[])
 // {
 // 	int	i;
+// 	int arguments;
+// 	int	*initial_array;
+// 	//char *char_array;
+// 	int	pos;
+// 	char	**temp;
+// 	int	length;
+// 	int	j;
 
-// 	i = -1;
-// 	while(i++ < arguments)
-// 	{
-		
+// 	pos = 0;
+// 	i = 1;
+// 	arguments = 0;
+//     if (argc < 2)
+//         return(print_errors());
+//     else
+// 	{	
+// 		arguments = count_arguments(argc - 1, argv);
+// 		printf("\nTotal arguments: %d\n", arguments);
+// 		//Hacer ft_split para casos "1  2". Esto debe ser considerado como dos argumentos separados (1 y 2).
+// 		/*Comprobar que los argumentos sean números enteros no mezclados con letras. Atoi optimizado*/
+// 		initial_array = (int*)malloc(sizeof(int) * arguments); //argc puede no ser el nº de argumentos totales, por eso uso arguments
+// 		if (!initial_array)
+// 			return (NULL);
+// 		while (i < argc)
+// 		{
+// 			length = 0;
+// 			j = -1;
+// 			printf("args:%s\n",argv[i]);
+// 			temp = ft_split(argv[i], ' ');
+// 			//TODO: Contar argumentos de temp y free (temp)
+// 			while (temp[length] != NULL)
+// 				length++;
+// 			/*Comprobar que los argumentos entran dentro de los límites INT_MIN-INT_MAX */
+// 			/*Comprobar primero que los argumentos solo incluyan '"' " " '-' '+' o números?*/
+// 			if (str_isdigit(temp, length) == -1)
+// 			{
+// 				free_array(temp, length);
+// 				free(initial_array);
+// 				return (print_errors());
+// 			}
+// 			// if (to_number(temp, length, &initial_array, pos) == -1)
+// 			// {
+// 			// 	free_array (temp, length);
+// 			// 	free (initial_array);
+// 			// 	return (print_errors());
+// 			// }
+// 			// free_array(temp, length);
+// 			while (j++ < length - 1)
+// 			{
+// 				initial_array[pos] = ft_atoi_optim(temp[j]);
+// 				if (initial_array[pos] == -1)
+// 				{
+// 					free_array (temp, length);
+// 					free (initial_array);
+// 					return (print_errors());
+// 				}
+// 				printf("\ninitial array[%d]: %d\n", pos, initial_array[pos]);
+// 				pos++;
+// 			}
+// 			free_array(temp,length);
+// 			// initial_array[pos] = ft_atoi_optim(argv[i]);
+// 			// if (initial_array[pos] == -1)
+// 			// {
+// 			// 	printf("entra");
+// 			// 	free (initial_array);
+// 			// 	return (print_errors());
+// 			// }
+// 			i++;
+// 			//pos += length;
+// 		}
 // 	}
+// 	//chequear dspués de guardar todos los números en el array de enteros?
+// 	if (check_duplicates(initial_array, arguments) == -1)
+// 	{
+// 	 	free (initial_array);
+// 	 	return(print_errors());
+// 	}
+// 	return (initial_array);
+// 	//return (temp);
 // }
 
-int	*parse_input (int argc, char *argv[])
+int	*parse_input (int arguments, int argc, char *argv[])
 {
 	int	i;
 	int	*initial_array;
-	//char *char_array;
-	int	arguments;
-	//int	pos;
+	int	pos;
 	char	**temp;
 	int	length;
-	//int	j;
+	int	j;
 
-	//pos = 0;
+	pos = 0;
 	i = 1;
-	arguments = 0;
-	//j = -1;
-    if (argc < 2)
-        return(print_errors());
-    else
-	{	
-		//Hacer ft_split para casos "1  2". Esto debe ser considerado como dos argumentos separados (1 y 2).
-		/*Comprobar que los argumentos sean números enteros no mezclados con letras. Atoi optimizado*/
-		initial_array = (int*)malloc(sizeof(int) * argc); //argc puede no ser el nº de argummentos totales
-		if (!initial_array)
-			return (NULL);
-		while (i < argc)
+	initial_array = (int*)malloc(sizeof(int) * arguments);
+	if (!initial_array)
+		return (NULL);
+	while (i < argc)
+	{
+		length = 0;
+		j = -1;
+		printf("args:%s\n",argv[i]);
+		temp = ft_split(argv[i], ' ');
+		while (temp[length] != NULL)
+			length++;
+		if (str_isdigit(temp, length) == -1)
 		{
-			length = 0;
-			printf("args:%s\n",argv[i]);
-			temp = ft_split(argv[i], ' ');
-			//TODO: Contar argumentos de temp y free (temp)
-			while (temp[length] != NULL)
-				length++;
-			printf("length: %d", length);
-			/*Comprobar que los argumentos entran dentro de los límites INT_MIN-INT_MAX */
-			/*Comprobar primero que los argumentos solo incluyan '"' " " '-' '+' o números?*/
-			if (str_isdigit(temp, length) == -1)
+			free_array(temp, length);
+			free(initial_array);
+			return (print_errors());
+		}
+		while (j++ < length - 1)
+		{
+			initial_array[pos] = ft_atoi_optim(temp[j]);
+			if (initial_array[pos] == -1)
 			{
-				free_array(temp, length);
-				//free(initial_array);
+				free_array (temp, length);
+				free (initial_array);
 				return (print_errors());
 			}
-			arguments += length;
-			printf("arguments: %d", arguments);
-			// while (j++ < length)
-			// {
-			// 	printf("\ntemp:%s", temp[j]);
-			// 	initial_array[pos] = ft_atoi_optim(temp[j]);
-			// 	if (initial_array[pos] == -1)
-			// 	{
-			// 		free_array (temp, length);
-			// 		free (initial_array);
-			// 		return (print_errors());
-			// 	}
-			// 	pos++;
-			// }
-			//free_array(temp,length);
-			// initial_array[pos] = ft_atoi_optim(argv[i]);
-			// if (initial_array[pos] == -1)
-			// {
-			// 	printf("entra");
-			// 	free (initial_array);
-			// 	return (print_errors());
-			// }
-			i++;
-			//pos++;
+			printf("\ninitial array[%d]: %d\n", pos, initial_array[pos]);
+			pos++;
 		}
+		free_array(temp,length);
+		i++;
+
 	}
-	//chequear dspués de guardar todos los números en el array de enteros?
-	// if (check_duplicates(initial_array, argc) == -1)
-	// {
-	// 	write(1, "adios", 5);
-	//  	free (initial_array);
-	//  	return(print_errors());
-	// }
+	if (check_duplicates(initial_array, arguments) == -1)
+	{
+	 	free (initial_array);
+	 	return(print_errors());
+	}
 	return (initial_array);
-	//return (temp);
 }

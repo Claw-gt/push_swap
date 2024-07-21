@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:25:57 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/21 12:58:46 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/21 14:14:34 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,8 @@ int	check_duplicates(int *array, int arguments)
 	}
     return (0);
 }
-int	count_arguments(int num_args, char **argv)
+
+int	count_and_check(int num_args, char **argv)
 {
 	int		i;
 	int		arguments;
@@ -122,11 +123,17 @@ int	count_arguments(int num_args, char **argv)
 		temp = ft_split(argv[i], ' ');
 		while (temp[length] != NULL)
 			length++;
+		if (str_isdigit(temp, length) == -1)
+		{
+			free_array(temp, length);
+			return (-1);
+		}
 		arguments += length;
 		free_array (temp, length);
 	}
 	return (arguments);
 }
+
 int	to_number(char **split_array, int num_args, int **int_array, int position) //paso por parámetro mi array
 {
 	int	i;
@@ -184,13 +191,6 @@ int	to_number(char **split_array, int num_args, int **int_array, int position) /
 // 				free(initial_array);
 // 				return (print_errors());
 // 			}
-// 			// if (to_number(temp, length, &initial_array, pos) == -1)
-// 			// {
-// 			// 	free_array (temp, length);
-// 			// 	free (initial_array);
-// 			// 	return (print_errors());
-// 			// }
-// 			// free_array(temp, length);
 // 			while (j++ < length - 1)
 // 			{
 // 				initial_array[pos] = ft_atoi_optim(temp[j]);
@@ -225,14 +225,42 @@ int	to_number(char **split_array, int num_args, int **int_array, int position) /
 // 	//return (temp);
 // }
 
-int	*parse_input (int arguments, int argc, char *argv[])
+
+/*Store and transform to numbers if checks OK*/
+int split_and_store(char *string_argument, int **int_array, int pos)
+{
+	int 	length;
+	char	**temp;
+	int		j;
+
+	length = 0;
+	j = -1;
+	temp = ft_split(string_argument, ' ');
+	while (temp[length] != NULL)
+		length++;
+	while (j++ < length - 1)
+	{
+		(*int_array)[pos] = ft_atoi_optim(temp[j]);
+		if ((*int_array)[pos] == -1)
+		{
+			free_array (temp, length);
+			free (int_array);
+			return (-1);
+		}	
+		pos++;
+	}
+	free_array(temp,length);
+	return (length);
+}
+
+int	*parse_input(int arguments, int argc, char *argv[])
 {
 	int	i;
 	int	*initial_array;
 	int	pos;
-	char	**temp;
+	//char	**temp;
 	int	length;
-	int	j;
+	//int	j;
 
 	pos = 0;
 	i = 1;
@@ -242,30 +270,38 @@ int	*parse_input (int arguments, int argc, char *argv[])
 	while (i < argc)
 	{
 		length = 0;
-		j = -1;
-		printf("args:%s\n",argv[i]);
-		temp = ft_split(argv[i], ' ');
-		while (temp[length] != NULL)
-			length++;
-		if (str_isdigit(temp, length) == -1)
-		{
-			free_array(temp, length);
-			free(initial_array);
+		// j = -1;
+		// printf("args:%s\n",argv[i]);
+		// temp = ft_split(argv[i], ' ');
+		// while (temp[length] != NULL)
+		// 	length++;
+		// if (str_isdigit(temp, length) == -1)
+		// {
+		// 	free_array(temp, length);
+		// 	free(initial_array);
+		// 	return (print_errors());
+		// }
+		//////////////////////////////
+		/*Store as numbers if check OK*/
+
+		// while (j++ < length - 1)
+		// {
+		// 	initial_array[pos] = ft_atoi_optim(temp[j]);
+		// 	if (initial_array[pos] == -1)
+		// 	{
+		// 		free_array (temp, length);
+		// 		free (initial_array);
+		// 		return (print_errors());
+		// 	}
+		// 	printf("\ninitial array[%d]: %d\n", pos, initial_array[pos]);
+		// 	pos++;
+		// }
+		// free_array(temp,length);
+		length = split_and_store(argv[i], &initial_array, pos);
+		if (length == -1)
 			return (print_errors());
-		}
-		while (j++ < length - 1)
-		{
-			initial_array[pos] = ft_atoi_optim(temp[j]);
-			if (initial_array[pos] == -1)
-			{
-				free_array (temp, length);
-				free (initial_array);
-				return (print_errors());
-			}
-			printf("\ninitial array[%d]: %d\n", pos, initial_array[pos]);
-			pos++;
-		}
-		free_array(temp,length);
+		//printf("\ninitial array[%d]: %d\n", pos, initial_array[pos]);
+		pos += length;
 		i++;
 
 	}

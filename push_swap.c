@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/21 13:01:15 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/21 13:45:01 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,12 @@ int	main(int argc, char **argv)
 		print_errors();
 		return (1);
 	}
-	arguments = count_arguments(argc - 1, argv);
+	arguments = count_and_check(argc - 1, argv);
+	if (arguments == -1)
+	{	
+		print_errors();
+		return (1);
+	}
 	initial_array = parse_input(arguments, argc, argv);
 	if (initial_array == NULL)
 		return (1);

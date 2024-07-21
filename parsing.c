@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:25:57 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/21 14:14:34 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/21 14:25:55 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	str_isdigit(char **string, int arguments)
 	while (i < arguments)
 	{
 		printf("argument check: %s", string[i]);
-		//string = ft_split(string[i], ' '); //para casos donde se mezclan "" con " " e.g "2     "
 		while(string[i][j] != '\0')
 		{
 			if (ft_isdigit(string[i][j]) == 0)
@@ -134,21 +133,6 @@ int	count_and_check(int num_args, char **argv)
 	return (arguments);
 }
 
-int	to_number(char **split_array, int num_args, int **int_array, int position) //paso por parámetro mi array
-{
-	int	i;
-
-	i = -1;
-	while(i++ < num_args)
-	{
-		*int_array[position] = ft_atoi_optim(split_array[i]);
-		if (*int_array[position] == -1)
-			return (-1);
-		position++;
-	}
-	return (0);
-}
-
 // int	*parse_input (int argc, char *argv[])
 // {
 // 	int	i;
@@ -225,6 +209,7 @@ int	to_number(char **split_array, int num_args, int **int_array, int position) /
 // 	//return (temp);
 // }
 
+/*Initial check*/
 
 /*Store and transform to numbers if checks OK*/
 int split_and_store(char *string_argument, int **int_array, int pos)
@@ -244,7 +229,7 @@ int split_and_store(char *string_argument, int **int_array, int pos)
 		if ((*int_array)[pos] == -1)
 		{
 			free_array (temp, length);
-			free (int_array);
+			free (*int_array);
 			return (-1);
 		}	
 		pos++;

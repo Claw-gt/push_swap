@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/21 13:45:20 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/25 18:31:29 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	ft_stckadd_back(t_stack **lst, t_stack *new);
 t_stack	*ft_stcknew(int content);
 
 t_stack	*ft_stcklast(t_stack *lst);
+
+void	ft_stckclear(t_stack **lst);
 
 void sa(t_stack **stack_a);
 

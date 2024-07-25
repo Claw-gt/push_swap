@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/21 14:29:23 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/25 18:36:03 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 t_stack *process_stack(t_stack **stack_a, int *initial_array, int arguments)
 {
 	int i;
+	t_stack *temp;
 
 	i = 0;
+	temp = *stack_a;
 	while (i < arguments)
 	{
 		ft_stckadd_back(stack_a, ft_stcknew(initial_array[i]));
@@ -24,7 +26,6 @@ t_stack *process_stack(t_stack **stack_a, int *initial_array, int arguments)
 		i++;
 	}
 	//(*stack_a)->next = NULL;
-	t_stack *temp = *stack_a;
 	while(temp)
 	{
 		//printf("temp->content: %d\n", *(int *)temp->content);
@@ -42,18 +43,14 @@ t_stack *process_stack(t_stack **stack_a, int *initial_array, int arguments)
 	}
 	return (*stack_a);
 }
+
 int	initial_check(int argc, char **argv)
 {
 	int	total_args;
 
 	total_args = 0;
-	if (argc < 2)
-	{
-		print_errors();
-		return (-1);
-	}
 	total_args = count_and_check(argc - 1, argv);
-	if (total_args == -1)
+	if (argc < 2 || total_args == -1)
 	{	
 		print_errors();
 		return (-1);
@@ -82,6 +79,6 @@ int	main(int argc, char **argv)
 	stack_a = NULL; //importante para evitar error con fsanitize
 	stack_a = process_stack(&stack_a, initial_array, arguments);
 	free (initial_array);
-	test(&stack_a);
+	test (&stack_a);
 	return (0);
 }

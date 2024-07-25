@@ -6,7 +6,7 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:25:33 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/19 18:24:09 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/25 18:31:37 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void test(t_stack **stack)
     }
     pb(stack, &stack_b);
     pb(stack, &stack_b);
+    sa(stack);
     //printf("B: %d", stack_b->index);
     printf("After operation\n");
     tmp = *stack;
@@ -43,5 +44,6 @@ void test(t_stack **stack)
         printf("%d\n", stack_b->index);
         stack_b = stack_b->next;
     }
+    ft_stckclear(&stack_b);
     printf("****************\n");
 }

@@ -6,7 +6,7 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 15:04:53 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/18 15:08:36 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/25 18:31:13 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,25 @@ t_stack	*ft_stcklast(t_stack *lst)
 	while (lst->next != NULL)
 		lst = lst->next;
 	return (lst);
+}
+
+void	ft_stckclear(t_stack **lst)
+{
+	t_stack	*current;
+	t_stack	*temp;
+
+	if (lst != NULL)
+	{
+		current = *lst;
+		while (current != NULL)
+		{
+			temp = current;
+			current = current->next;
+			free (temp);
+		}
+		free (current);
+		*lst = NULL;
+	}
 }
 
 t_stack	*ft_stcknew(int content)

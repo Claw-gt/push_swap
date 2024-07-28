@@ -6,7 +6,7 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/25 18:36:03 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/28 16:21:22 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL; //importante para evitar error con fsanitize
 	stack_a = process_stack(&stack_a, initial_array, arguments);
 	free (initial_array);
-	test (&stack_a);
+	test_sort_three(&stack_a);
+	//test_operations(&stack_a);
 	return (0);
 }

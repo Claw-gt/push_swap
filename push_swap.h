@@ -6,7 +6,7 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/25 18:31:29 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/28 16:20:58 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ void rrb(t_stack **stack_b);
 
 void rrr(t_stack **stack_a, t_stack **stack_b);
 
-t_list	*ft_lstnew(void *content);
+void test_operations(t_stack **stack);
 
-t_list	*ft_lstlast(t_list *lst);
+void test_sort_three(t_stack **stack);
 
-void	ft_lstadd_back(t_list **lst, t_list *new);
+void sort_three(t_stack **stack_a);
 
-void 	test(t_stack **stack);
+int check_sorted(t_stack *stack);
 #endif

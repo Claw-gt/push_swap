@@ -6,13 +6,13 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:25:33 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/25 18:31:37 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/07/28 16:22:38 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void test(t_stack **stack)
+void test_operations(t_stack **stack)
 {
     t_stack *stack_b;
     t_stack *tmp;
@@ -45,5 +45,27 @@ void test(t_stack **stack)
         stack_b = stack_b->next;
     }
     ft_stckclear(&stack_b);
+    printf("****************\n");
+}
+
+void test_sort_three(t_stack **stack)
+{
+    t_stack *tmp;
+
+    printf("\n****************\nBefore operation\n");
+    tmp = *stack;
+    while (tmp)
+    {
+        printf("%d %d\n", tmp->index, tmp->content);
+        tmp = tmp->next;
+    }
+    sort_three(stack);
+    printf("After operation\n");
+    tmp = *stack;
+    while (tmp)
+    {
+        printf("%d %d\n", tmp->index, tmp->content);
+        tmp = tmp->next;
+    }
     printf("****************\n");
 }

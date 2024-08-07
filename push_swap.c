@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/28 16:21:22 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:10:44 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ t_stack *process_stack(t_stack **stack_a, int *initial_array, int arguments)
 	}
 	quick_sort(initial_array, 0, arguments - 1);
 	stack_indexing(stack_a, initial_array);
+	(*stack_a)->size = arguments;
+	//printf("midpoint = %d\n", check_midpoint((*stack_a)->size));
+	//printf("Size of stack is %d\n", calculate_size(*stack_a));
 	t_stack *check = *stack_a;
 	while(check)
 	{
@@ -79,7 +82,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL; //importante para evitar error con fsanitize
 	stack_a = process_stack(&stack_a, initial_array, arguments);
 	free (initial_array);
-	test_sort_three(&stack_a);
+	//test_sort_three(&stack_a);
 	//test_operations(&stack_a);
 	return (0);
 }

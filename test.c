@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:25:33 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/28 16:22:38 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:08:31 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void test_operations(t_stack **stack)
     pb(stack, &stack_b);
     pb(stack, &stack_b);
     sa(stack);
-    //printf("B: %d", stack_b->index);
+    printf("Size of B: %d", calculate_size(stack_b));
     printf("After operation\n");
     tmp = *stack;
     while (tmp)

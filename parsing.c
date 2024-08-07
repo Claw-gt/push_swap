@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:25:57 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/28 16:27:09 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/07 16:32:57 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ int	str_isdigit(char **string, int arguments)
 	j = 0;
 	while (i < arguments)
 	{
-		printf("argument check: %s", string[i]);
+		if (string[i][j] == '-' || string[i][j] == '+')
+			j++;
 		while(string[i][j] != '\0')
 		{
 			if (ft_isdigit(string[i][j]) == 0)
-				return (-1);	
+				return (-1);
 			j++;
 		}	
 		i++;
@@ -48,7 +49,7 @@ int	str_isdigit(char **string, int arguments)
 	return (0);
 }
 
-int	ft_atoi_optim(const char *nptr)
+int	ft_atoi_optim(const char *nptr, int *error_flag)
 {
 	int			i;
 	int			minus;
@@ -74,7 +75,8 @@ int	ft_atoi_optim(const char *nptr)
 	if (minus)
 		num *= -1;
 	if (num > INT_MAX || num < INT_MIN)
-		return (-1);
+		*error_flag = -1;
+		//return (-1);
 	printf("num: %ld\n", num);
 	return ((int)num);
 }
@@ -217,16 +219,19 @@ int split_and_store(char *string_argument, int **int_array, int pos)
 	int 	length;
 	char	**temp;
 	int		j;
+	int		error_flag;
 
 	length = 0;
 	j = -1;
+	error_flag = 0;
 	temp = ft_split(string_argument, ' ');
 	while (temp[length] != NULL)
 		length++;
 	while (j++ < length - 1)
 	{
-		(*int_array)[pos] = ft_atoi_optim(temp[j]);
-		if ((*int_array)[pos] == -1)
+		(*int_array)[pos] = ft_atoi_optim(temp[j], &error_flag);
+		//if ((*int_array)[pos] == -1)
+		if (error_flag == -1)
 		{
 			free_array (temp, length);
 			free (*int_array);

@@ -3,32 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   linked_stacks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 15:04:53 by clagarci          #+#    #+#             */
-/*   Updated: 2024/07/25 18:31:13 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/07 15:55:54 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_stcklast(t_stack *lst)
+t_stack	*ft_stcklast(t_stack *stck)
 {
-	if (lst == NULL)
+	if (stck == NULL)
 		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	while (stck->next != NULL)
+		stck = stck->next;
+	return (stck);
 }
 
-void	ft_stckclear(t_stack **lst)
+void	ft_stckclear(t_stack **stck)
 {
 	t_stack	*current;
 	t_stack	*temp;
 
-	if (lst != NULL)
+	if (stck != NULL)
 	{
-		current = *lst;
+		current = *stck;
 		while (current != NULL)
 		{
 			temp = current;
@@ -36,7 +36,7 @@ void	ft_stckclear(t_stack **lst)
 			free (temp);
 		}
 		free (current);
-		*lst = NULL;
+		*stck = NULL;
 	}
 }
 
@@ -52,19 +52,32 @@ t_stack	*ft_stcknew(int content)
 	return (new_node);
 }
 
-void	ft_stckadd_back(t_stack **lst, t_stack *new)
+void	ft_stckadd_back(t_stack **stck, t_stack *new)
 {
 	t_stack	*temp;
 
-	if (!lst || !new)
+	if (!stck || !new)
 		return ;
-	if (*lst == NULL)
-		*lst = new;
+	if (*stck == NULL)
+		*stck = new;
 	else
 	{
-		temp = *lst;
+		temp = *stck;
 		while (temp->next != NULL)
 			temp = temp->next;
 		temp->next = new;
 	}
+}
+
+int	ft_stcksize(t_stack *stck)
+{
+	int	length;
+
+	length = 0;
+	while (stck != NULL)
+	{
+		length++;
+		stck = stck->next;
+	}
+	return (length);
 }

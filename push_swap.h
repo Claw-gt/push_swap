@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/07 13:19:38 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/07 16:11:41 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_stack
 {
 	int				content;
 	int				index;
-	int				size;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -32,6 +31,10 @@ int	to_number(char **split_array, int num_args, int **int_array, int position);
 int	count_and_check(int num_args, char **argv);
 
 int	find_midpoint(int size_stack);
+
+void push_to_b(t_stack **stack_a);
+
+void sort_stack(t_stack **stack_a);
 
 void	*print_errors(void);
 
@@ -47,13 +50,15 @@ int find_number(int *array, int number);
 
 void stack_indexing(t_stack **stack, int *array);
 
-void	ft_stckadd_back(t_stack **lst, t_stack *new);
+void	ft_stckadd_back(t_stack **stck, t_stack *new);
 
 t_stack	*ft_stcknew(int content);
 
-t_stack	*ft_stcklast(t_stack *lst);
+t_stack	*ft_stcklast(t_stack *stck);
 
-void	ft_stckclear(t_stack **lst);
+void	ft_stckclear(t_stack **stck);
+
+int	ft_stcksize(t_stack *stck);
 
 void sa(t_stack **stack_a);
 
@@ -80,6 +85,8 @@ void rrr(t_stack **stack_a, t_stack **stack_b);
 void test_operations(t_stack **stack);
 
 void test_sort_three(t_stack **stack);
+
+void test_sort(t_stack **stack);
 
 void sort_three(t_stack **stack_a);
 

@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/07 16:11:41 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/07 16:57:43 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,5 @@ void sort_three(t_stack **stack_a);
 
 int check_sorted(t_stack *stack);
 
-int calculate_size(t_stack *stack);
+int find_optim(t_stack **stack_b);
 #endif

@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:46:55 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/07 16:14:51 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/07 17:14:37 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void sort_stack(t_stack **stack_a)
 			sort_three(stack_a);
 		}
 	}
-		printf("Stack A\n");
+	printf("Stack A\n");
 	tmp = *stack_a;
 	while (tmp)
     {

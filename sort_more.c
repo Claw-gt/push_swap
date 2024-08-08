@@ -6,7 +6,7 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:46:55 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/08 16:08:58 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:14:35 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void push_until_three(t_stack **stack_a, t_stack **stack_b, int size)
 	tmp = *stack_a;
 	midpoint = find_midpoint(size);
 	// push_lowerhalf;
-	while (tmp && lower_half(*stack_a, midpoint) != -1 && ft_stcksize(*stack_a) >= 3) //iterar por los nodos mientras haya alguno que cumpla la condición
+	while (tmp && lower_half(*stack_a, midpoint) != -1 && ft_stcksize(*stack_a) > 3) //iterar por los nodos mientras haya alguno que cumpla la condición
 	{
 		if (tmp->index < midpoint) //&& tmp->index <= (size - 3))
 			pb(stack_a, stack_b);	

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/07 16:57:43 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:04:51 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void test_sort_three(t_stack **stack);
 void test_sort(t_stack **stack);
 
 void sort_three(t_stack **stack_a);
+
+void sort_more(t_stack **stack_a);
 
 int check_sorted(t_stack *stack);
 

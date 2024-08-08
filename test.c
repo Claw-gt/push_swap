@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:25:33 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/07 15:59:38 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:05:26 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void test_sort(t_stack **stack)
         printf("%d %d\n", tmp->index, tmp->content);
         tmp = tmp->next;
     }
-    push_to_b(stack);
+    sort_more(stack);
     printf("After operation\n");
     tmp = *stack;
     while (tmp)

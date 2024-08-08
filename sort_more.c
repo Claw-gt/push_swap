@@ -6,7 +6,7 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:46:55 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/08 16:14:35 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:16:48 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,6 @@ void push_until_three(t_stack **stack_a, t_stack **stack_b, int size)
 	}
 	
 }
-
-// void push_tophalf(t_stack **stack_a, t_stack **stack_b, int size)
-// {
-// 	t_stack	*tmp;
-
-// 	tmp = *stack_a;
-// 	while (tmp && ft_stcksize(*stack_a) > 3)
-// 	{
-// 		if (tmp->index <= (size - 3))
-// 			pb(stack_a, stack_b);
-// 		else
-// 			ra(stack_a);
-// 		tmp = *stack_a;
-// 	}
-// }
 
 void sort_more(t_stack **stack_a)
 {

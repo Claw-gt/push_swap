@@ -6,7 +6,7 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:46:55 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/08 16:02:21 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:08:58 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	find_midpoint(int size_stack)
 	return (midpoint);
 }
 
+// TO DO: Comprobar si debería ser "<" o "<="
+
 int	lower_half(t_stack *stack, int middle)
 {
 	t_stack	*tmp;
@@ -30,7 +32,7 @@ int	lower_half(t_stack *stack, int middle)
 	tmp = stack;
 	while (tmp)
 	{
-		if (tmp->index < middle)
+		if (tmp->index <= middle)
 			return (0);
 		tmp = tmp->next;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_more.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:46:55 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/08 16:16:48 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:50:32 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void sort_more(t_stack **stack_a)
         tmp = tmp->next;
     }
 	printf("****************\n");
+	stack_position(stack_a);
+	stack_position(&stack_b);
 }
 
 

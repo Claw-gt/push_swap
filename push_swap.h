@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/08 16:04:51 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:46:50 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ typedef struct s_stack
 {
 	int				content;
 	int				index;
+	int				position;
 	struct s_stack	*next;
 }					t_stack;
+
+void stack_position(t_stack **stack);
 
 int	to_number(char **split_array, int num_args, int **int_array, int position);
 
@@ -91,6 +94,8 @@ void test_sort(t_stack **stack);
 void sort_three(t_stack **stack_a);
 
 void sort_more(t_stack **stack_a);
+
+void sort_stack(t_stack **stack_a);
 
 int check_sorted(t_stack *stack);
 

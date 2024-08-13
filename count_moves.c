@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:11:42 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/13 17:37:32 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:41:25 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	costs_node_b(int initial_position, int target_position, int size_b, int size
 		absolute_value(moves_a)--;
 		absolute_value(moves_b)--;
 	}
+	
 	//else if ()
 }
 

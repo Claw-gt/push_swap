@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:46:55 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/13 13:50:32 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:32:49 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,31 +71,47 @@ void push_until_three(t_stack **stack_a, t_stack **stack_b, int size)
 void sort_more(t_stack **stack_a)
 {
 	t_stack	*stack_b;
-	t_stack	*tmp;
+	t_stack	*tmp_b;
 	int		total_args;
+	int		total_moves;
+	int		lower_costs;
 
 	stack_b = NULL;
 	total_args = 0;
+	total_moves = 0;
+	lower_costs = 0;
 	total_args = ft_stcksize(*stack_a);
 	push_until_three(stack_a, &stack_b, total_args);
 	sort_three(stack_a);
-	printf("Stack A\n");
-	tmp = *stack_a;
-	while (tmp)
-    {
-        printf("%d\n", tmp->index);
-        tmp = tmp->next;
-    }
-	tmp = stack_b;
-	printf("Stack B\n");
-	while (tmp)
-    {
-        printf("%d\n", tmp->index);
-        tmp = tmp->next;
-    }
-	printf("****************\n");
-	stack_position(stack_a);
-	stack_position(&stack_b);
+	// printf("Stack A\n");
+	// tmp = *stack_a;
+	// while (tmp)
+    // {
+		
+    //     printf("%d pos: %d\n", tmp->index, stack_position(stack_a, tmp->index));
+    //     tmp = tmp->next;
+    // }
+	// tmp = stack_b;
+	// printf("Stack B\n");
+	// while (tmp)
+    // {
+    //     printf("%d pos: %d\n", tmp->index, stack_position(&stack_b, tmp->index));
+    //     tmp = tmp->next;
+    // }
+	// printf("****************\n");
+	tmp_b = stack_b;
+	optim_node = stack_b;
+	lower_costs = costs_node_b(stack_position(stack_b, tmp_b->index), target_position(stack_a, tmp_b->index), ft_stcksize(stack_b), ft_stcksize(stack_a));
+	while (tmp_b)
+	{
+		total_moves = costs_node_b(stack_position(stack_b, tmp_b->index), target_position(stack_a, tmp_b->index), ft_stcksize(stack_b), ft_stcksize(stack_a));
+		if (total_moves < lower_costs)
+		{
+			lower_costs = total_moves;
+			optim_node = tmp_b;
+		}
+		tmp_b = tmp_b->next;
+	}
 }
 
 

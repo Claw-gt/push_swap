@@ -6,60 +6,69 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:11:42 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/13 14:52:35 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:37:32 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void join_moves(t_stack **stack_a, t_stack **stack_b, int moves_a, int moves_b)
-{
-	if ((*moves_a > 0 && *moves_b > 0))
-		rr(stack_a, stack_b);
-	else if (((*moves_a < 0 && *moves_b < 0)))
-		rrr(stack_a, stack_b);
-}
+// void join_moves(t_stack **stack_a, t_stack **stack_b, int moves_a, int moves_b)
+// {
+// 	if ((*moves_a > 0 && *moves_b > 0))
+// 		rr(stack_a, stack_b);
+// 	else if (((*moves_a < 0 && *moves_b < 0)))
+// 		rrr(stack_a, stack_b);
+// }
 
-int count_moves_(t_stack **stack)
+int count_moves(int position, int size_stack)
 {
     int 	moves;
-	t_stack	*tmp;
-	int		size;
 
-	tmp = *stack;
     moves = 0;
-	size =  ft_stcksize(*stack);
-	while (tmp)
-	{
-		if (tmp->position <= (size / 2))
-			moves = position; //moves es positivo -> rotate
-		else
-			moves = size - position; //moves es negativo -> reverse rotate
-		tmp = tmp->next;
-	}
+	if (position <= (size_stack / 2))
+		moves = position; //moves es positivo -> rotate
+	else
+		moves = size_stack - position; //moves es negativo -> reverse rotate
     return (moves);
 }
 
-int	calculate_costs(t_stack **stack_a, t_stack **stack_b)
+int absolute_value(int num)
 {
-	i
+	if (num < 0)
+		num *= -1;
+	return (num);
 }
 
-int find_optim(t_stack **stack_b)
+int	costs_node_b(int initial_position, int target_position, int size_b, int size_a)
 {
-    t_stack *tmp;
-    int     cheapest;
-	int		min;
+	int moves_b;
+	int	moves_a;
 
-    tmp = *stack_b;
-    cheapest = (*stack_b)->index;
-	min = count_moves(stack_b);
-	printf("moves %d", min);
-    while (tmp)
-    {
-        if (count_moves(stack_b, tmp->index) < min)
-			cheapest = tmp->index;
-        tmp = tmp->next;
-    }
-	return (cheapest);
+	moves_b = count_moves(initial_position, size_b);
+	moves_a = count_moves(target_position, size_a);
+	if ((moves_a > 0 && moves_b > 0) || (moves_a < 0 && moves_b < 0))
+	{
+		absolute_value(moves_a)--;
+		absolute_value(moves_b)--;
+	}
+	//else if ()
 }
+
+// int find_optim(t_stack **stack_b)
+// {
+//     t_stack *tmp;
+//     int     cheapest;
+// 	int		min;
+
+//     tmp = *stack_b;
+//     cheapest = (*stack_b)->index;
+// 	min = count_moves(stack_b);
+// 	printf("moves %d", min);
+//     while (tmp)
+//     {
+//         if (count_moves(stack_b, tmp->index) < min)
+// 			cheapest = tmp->index;
+//         tmp = tmp->next;
+//     }
+// 	return (cheapest);
+// }

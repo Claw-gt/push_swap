@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/13 13:46:50 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:16:36 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-void stack_position(t_stack **stack);
+int stack_position(t_stack **stack, int number);
 
 int	to_number(char **split_array, int num_args, int **int_array, int position);
 

@@ -6,7 +6,7 @@
 /*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:46:55 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/14 13:20:21 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/14 13:29:51 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,7 @@ void sort_more(t_stack **stack_a)
 		// moves_b = count_moves(initial_position, size_b);
 		// moves_a = count_moves(target_position, size_a);
 		optim_node = find_optim(&initial_position, &target_position, &stack_b, stack_a);
-		// optim_node = find_optim(&stack_b, );
-		//moves (optim_node, moves_a, moves_b)
+		moves(optim_node);
 	}
 	// printf("Stack A\n");
 	// tmp = *stack_a;

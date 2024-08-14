@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/13 17:16:36 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/14 13:28:27 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ typedef struct s_stack
 {
 	int				content;
 	int				index;
-	int				position;
+	int				moves_a;
+	int				moves_b;
 	struct s_stack	*next;
 }					t_stack;
 

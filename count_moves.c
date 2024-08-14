@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:11:42 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/13 17:41:25 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/14 13:27:48 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,44 +32,111 @@ int count_moves(int position, int size_stack)
     return (moves);
 }
 
-int absolute_value(int num)
+int abs(int num)
 {
 	if (num < 0)
 		num *= -1;
 	return (num);
 }
 
-int	costs_node_b(int initial_position, int target_position, int size_b, int size_a)
-{
-	int moves_b;
-	int	moves_a;
+// int	costs_node_b(int initial_position, int target_position, int size_b, int size_a)
+// {
+// 	int moves_b;
+// 	int	moves_a;
 
-	moves_b = count_moves(initial_position, size_b);
-	moves_a = count_moves(target_position, size_a);
-	if ((moves_a > 0 && moves_b > 0) || (moves_a < 0 && moves_b < 0))
+// 	moves_b = count_moves(initial_position, size_b);
+// 	moves_a = count_moves(target_position, size_a);
+// 	return (absolute_value(moves_b) + absolute_value(moves_a));
+// }
+
+int	find_optim(int *initial_position, int *target_position, t_stack **stack_b, t_stack **stack_a)
+{
+	int 		moves_b;
+	int			moves_a;
+	t_stack     *cheapest;
+	int			lower_costs;
+	t_stack		*tmp_b;
+
+	tmp_b = *stack_b;
+	cheapest = *stack_b;
+	(*stack_b)->moves_b = count_moves(initial_position, ft_stcksize(stack_b));
+	(*stack_b)->moves_a = count_moves(target_position, ft_stcksize(stack_a));
+	lower_costs = abs(moves_b) + abs(moves_a);
+	while (tmp_b)
 	{
-		absolute_value(moves_a)--;
-		absolute_value(moves_b)--;
+		*initial_position = stack_position(&stack_b, tmp_b->index);
+		*target_position = target_position(stack_a, tmp_b->index);
+		tmp_b->moves_b = count_moves(initial_position, ft_stcksize(stack_b));
+		tmp_b->moves_a = count_moves(target_position, ft_stcksize(stack_a));
+		if (abs(tmp_b->moves_b) + abs(tmp_b->moves_a) < lower_costs)
+		{
+			lower_costs = abs(tmp_b->moves_b) + abs(tmp_b->moves_a);
+			cheapest = tmp_b;
+		}
+		tmp_b = tmp_b->next;
 	}
-	
-	//else if ()
+	//return (abs(moves_b) + abs(moves_a));
+	return (cheapest);
 }
 
-// int find_optim(t_stack **stack_b)
+// t_stack *find_optim(t_stack **stack_b, int size_a, int size_b)
 // {
-//     t_stack *tmp;
-//     int     cheapest;
-// 	int		min;
-
-//     tmp = *stack_b;
-//     cheapest = (*stack_b)->index;
-// 	min = count_moves(stack_b);
-// 	printf("moves %d", min);
-//     while (tmp)
-//     {
-//         if (count_moves(stack_b, tmp->index) < min)
-// 			cheapest = tmp->index;
-//         tmp = tmp->next;
-//     }
+//     t_stack 	*tmp_b;
+//     t_stack     *cheapest;
+// 	int			total_moves;
+// 	int			lower_costs;
+// 	int			initial_position;
+// 	int			target_position;
+	
+//     tmp_b = *stack_b;
+//     cheapest = *stack_b;
+// 	total_moves = 0;
+// 	lower_costs = 1;
+// 	//lower_costs = costs_node_b(stack_position(stack_b, tmp_b->index), target_position(stack_a, tmp_b->index), ft_stcksize(stack_b), ft_stcksize(stack_a));
+// 	while (tmp_b)
+// 	{
+// 		//debe devolver los moves en valor absoluto
+// 		//(*stack_b)->moves_b = count_moves(stack_position(stack_b, tmp_b->index), size_b);
+// 		total_moves = costs_node_b(stack_position(stack_b, tmp_b->index), target_position(stack_a, tmp_b->index), size_b, size_a);
+// 		if (total_moves < lower_costs)
+// 		{
+// 			lower_costs = total_moves;
+// 			cheapest = tmp_b;
+// 		}
+// 		tmp_b = tmp_b->next;
+// 	}
 // 	return (cheapest);
 // }
+
+void moves(t_stack *optim_node)
+{
+	while (optim_node->moves_b != 0 && optim_node->moves_a != 0)
+	{
+		if (optim_node->moves_b > 0 && optim_node->moves_a > 0)
+		{
+			rr(stack_a, stack_b);
+			optim_node->moves_b--;
+			optim_node->moves_a--;
+		}	
+		else if (optim_node->moves_b < 0 && optim_node->moves_a < 0)
+		{
+			rrr(stack_a, stack_b);
+			optim_node->moves_b++;
+			optim_node->moves_a++;
+		}	
+		else if (optim_node->moves_b > 0 && optim_node->moves_a < 0)
+		{
+			rra(stack_a);
+			rb(stack_b);
+			optim_node->moves_b--;
+			optim_node->moves_a++;
+		}
+		else if (optim_node->moves_b < 0 && optim_node->moves_a > 0)
+		{
+			ra(stack_a);
+			rrb(stack_b);
+			optim_node->moves_b++;
+			optim_node->moves_a--;
+		}
+	}
+}

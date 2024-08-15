@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:25:57 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/07 16:32:57 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/15 11:54:55 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,7 +227,7 @@ int split_and_store(char *string_argument, int **int_array, int pos)
 	temp = ft_split(string_argument, ' ');
 	while (temp[length] != NULL)
 		length++;
-	while (j++ < length - 1)
+	while (j++ < (length - 1))
 	{
 		(*int_array)[pos] = ft_atoi_optim(temp[j], &error_flag);
 		//if ((*int_array)[pos] == -1)

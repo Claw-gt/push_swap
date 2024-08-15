@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_more.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:46:55 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/14 13:29:51 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/15 12:23:18 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,12 @@ void push_until_three(t_stack **stack_a, t_stack **stack_b, int size)
 void sort_more(t_stack **stack_a)
 {
 	t_stack	*stack_b;
-	t_stack	*tmp_b;
+	//t_stack	*tmp_b;
+	t_stack	*tmp;
 	t_stack	*optim_node;
 	int		total_args;
 	int		initial_position;
 	int		target_position;
-	int		moves_a;
-	int		moves_b;
 	//int		total_moves;
 	//int		lower_costs;
 
@@ -85,15 +84,31 @@ void sort_more(t_stack **stack_a)
 	total_args = 0;
 	initial_position = 0;
 	target_position = 0;
-	moves_a = 0;
-	moves_b = 0;
 	//total_moves = 0;
 	//lower_costs = 0;
 	total_args = ft_stcksize(*stack_a);
 	push_until_three(stack_a, &stack_b, total_args);
 	sort_three(stack_a);
-	tmp_b = stack_b;
-	while (tmp_b)
+	///////////////////////////
+	printf("Stack A\n");
+	tmp = *stack_a;
+	while (tmp)
+    {
+		
+        printf("%d pos: %d\n", tmp->index, stack_position(stack_a, tmp->index));
+        tmp = tmp->next;
+    }
+	tmp = stack_b;
+	printf("Stack B\n");
+	while (tmp)
+    {
+        printf("%d pos: %d\n", tmp->index, stack_position(&stack_b, tmp->index));
+        tmp = tmp->next;
+    }
+	printf("****************\n");
+	/////////////////////////////
+	//tmp_b = stack_b;
+	while (stack_b)
 	{
 		//tiene que estar dentro de otro bucle que recorra todos los nodos de stack_b
 		//funcion assign_position que asigne la posicióna todos los nodos de B y que llame a stack y target position
@@ -101,26 +116,36 @@ void sort_more(t_stack **stack_a)
 		// target_position = target_position(stack_a, tmp_b->index);
 		// moves_b = count_moves(initial_position, size_b);
 		// moves_a = count_moves(target_position, size_a);
-		optim_node = find_optim(&initial_position, &target_position, &stack_b, stack_a);
-		moves(optim_node);
+		optim_node = find_optim(initial_position, target_position, &stack_b, stack_a);
+		//printf("\nThe optim node is %d", optim_node->index);
+		moves(optim_node, stack_a, &stack_b);
+		printf("Size of stack B is %d\n", ft_stcksize(stack_b));
+		tmp = stack_b;
+		printf("Stack B\n");
+		while (tmp)
+		{
+			printf("%d pos: %d\n", tmp->index, stack_position(&stack_b, tmp->index));
+			tmp = tmp->next;
+		}
 	}
-	// printf("Stack A\n");
-	// tmp = *stack_a;
-	// while (tmp)
-    // {
+	printf("Stack A\n");
+	tmp = *stack_a;
+	while (tmp)
+    {
 		
-    //     printf("%d pos: %d\n", tmp->index, stack_position(stack_a, tmp->index));
-    //     tmp = tmp->next;
-    // }
-	// tmp = stack_b;
-	// printf("Stack B\n");
-	// while (tmp)
-    // {
-    //     printf("%d pos: %d\n", tmp->index, stack_position(&stack_b, tmp->index));
-    //     tmp = tmp->next;
-    // }
-	// printf("****************\n");
-	
+        printf("%d pos: %d\n", tmp->index, stack_position(stack_a, tmp->index));
+        tmp = tmp->next;
+    }
+	tmp = stack_b;
+	printf("Stack B\n");
+	while (tmp)
+    {
+        printf("%d pos: %d\n", tmp->index, stack_position(&stack_b, tmp->index));
+        tmp = tmp->next;
+    }
+	printf("****************\n");
+	while (check_sorted(*stack_a) != 0)
+		rra(stack_a);
 	// tmp_b = stack_b;
 	// optim_node = stack_b;
 	// lower_costs = costs_node_b(stack_position(stack_b, tmp_b->index), target_position(stack_a, tmp_b->index), ft_stcksize(stack_b), ft_stcksize(stack_a));

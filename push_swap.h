@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/14 13:28:27 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/15 11:09:11 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,15 @@ typedef struct s_stack
 
 int stack_position(t_stack **stack, int number);
 
+int target_position(t_stack **stack_a, int stack_b_index);
+
 int	to_number(char **split_array, int num_args, int **int_array, int position);
 
 int	count_and_check(int num_args, char **argv);
 
 int	find_midpoint(int size_stack);
+
+int find_max(t_stack *stack);
 
 void push_to_b(t_stack **stack_a);
 
@@ -100,5 +104,7 @@ void sort_stack(t_stack **stack_a);
 
 int check_sorted(t_stack *stack);
 
-int find_optim(t_stack **stack_b);
+t_stack	*find_optim(int initial_position, int target_position, t_stack **stack_b, t_stack **stack_a);
+
+void moves(t_stack *optim_node, t_stack **stack_a, t_stack **stack_b);
 #endif

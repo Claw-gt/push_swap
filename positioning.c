@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:41:28 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/13 17:01:00 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/15 11:03:51 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int target_position(t_stack **stack_a, int stack_b_index)
 
     target_pos = 0;
     tmp_a = *stack_a;
-    closest_num = find_max(stack_a);
+    closest_num = find_max(*stack_a);
     while (tmp_a)
     {
         if (stack_b_index < tmp_a->index && closest_num > tmp_a->index)

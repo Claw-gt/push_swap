@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:46:55 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/15 12:42:17 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/15 12:54:30 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void push_until_three(t_stack **stack_a, t_stack **stack_b, int size)
 	// push_lowerhalf;
 	while (tmp && lower_half(*stack_a, midpoint) != -1 && ft_stcksize(*stack_a) > 3) //iterar por los nodos mientras haya alguno que cumpla la condición
 	{
-		if (tmp->index <= midpoint) //&& tmp->index <= (size - 3))
+		if (tmp->index <= midpoint && tmp->index <= (size - 3))
 			pb(stack_a, stack_b);	
 		else
 			ra(stack_a);
@@ -144,8 +144,8 @@ void sort_more(t_stack **stack_a)
         tmp = tmp->next;
     }
 	printf("****************\n");
-	while (check_sorted(*stack_a) != 0)
-		rra(stack_a);
+	//while (check_sorted(*stack_a) != 0)
+		//rra(stack_a);
 	// tmp_b = stack_b;
 	// optim_node = stack_b;
 	// lower_costs = costs_node_b(stack_position(stack_b, tmp_b->index), target_position(stack_a, tmp_b->index), ft_stcksize(stack_b), ft_stcksize(stack_a));

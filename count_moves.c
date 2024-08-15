@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:11:42 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/15 12:22:38 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:01:40 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ t_stack	*find_optim(int initial, int target, t_stack **stack_b, t_stack **stack_
 // 	return (cheapest);
 // }
 
+//TO DO: contar movimientos teniendo en cuenta que se pueden reducir con rr y rrr
 void moves(t_stack *optim_node, t_stack **stack_a, t_stack **stack_b)
 {
 	while (optim_node->moves_b != 0 || optim_node->moves_a != 0)

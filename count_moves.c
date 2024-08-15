@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:11:42 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/15 13:01:40 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/15 17:47:51 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int count_moves(int position, int size_stack)
 	if (position <= (size_stack / 2))
 		moves = position; //moves es positivo -> rotate
 	else
-		moves = size_stack - position; //moves es negativo -> reverse rotate
+		moves = position - size_stack; //moves es negativo -> reverse rotate
     return (moves);
 }
 
@@ -66,6 +66,7 @@ t_stack	*find_optim(int initial, int target, t_stack **stack_b, t_stack **stack_
 		target = target_position(stack_a, tmp_b->index);
 		tmp_b->moves_b = count_moves(initial, ft_stcksize(*stack_b));
 		tmp_b->moves_a = count_moves(target, ft_stcksize(*stack_a));
+		printf("Moves in B: %d Moves in A: %d", tmp_b->moves_b, tmp_b->moves_a);
 		printf("The total costs are %d\n", abs(tmp_b->moves_b) + abs(tmp_b->moves_a));
 		if (abs(tmp_b->moves_b) + abs(tmp_b->moves_a) < lower_costs)
 		{

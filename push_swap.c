@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/16 18:33:09 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:57:50 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,14 @@ int	initial_check(int argc, char **argv)
 {
 	int	total_args;
 	int	i;
+	int	j;
 
+	j = 0;
 	i = 1;
 	total_args = 0;
 	while (i < argc)
 	{
-		if (!argv[i])
+		if (argv[i][j] == '\0')
 		{
 			print_errors();
 			return (-1);

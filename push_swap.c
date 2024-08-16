@@ -6,11 +6,15 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/13 13:46:35 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:46:28 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	leaks(void){
+	system("leaks -q a.out");
+}
 
 t_stack *process_stack(t_stack **stack_a, int *initial_array, int arguments)
 {
@@ -85,5 +89,6 @@ int	main(int argc, char **argv)
 	//test_sort(&stack_a);
 	//test_sort_three(&stack_a);
 	//test_operations(&stack_a);
+	atexit (leaks);
 	return (0);
 }

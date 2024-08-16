@@ -6,7 +6,7 @@
 #    By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 19:23:32 by clagarci          #+#    #+#              #
-#    Updated: 2024/08/13 13:46:11 by clagarci         ###   ########.fr        #
+#    Updated: 2024/08/16 14:43:14 by clagarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBS = -lft #for the name of the *.a file. Here the "lib" prefix and ".a" extens
 LIBDIR = libft/
 
 MY_SOURCES = push_swap.c parsing.c operations/push.c operations/swap.c operations/rotate.c operations/reverse_rotate.c \
-			linked_stacks.c indexing.c sort_three.c sort_more.c utils.c sort.c positioning.c test.c count_moves.c
+			linked_stacks.c indexing.c sort_three.c sort_more.c sort.c positioning.c test.c count_moves.c
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

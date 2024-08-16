@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:25:57 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/15 11:54:55 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/16 19:03:58 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	str_isdigit(char **string, int arguments)
 	j = 0;
 	while (i < arguments)
 	{
-		if (string[i][j] == '-' || string[i][j] == '+')
+		if ((string[i][j] == '-' || string[i][j] == '+') && ft_isdigit(string[i][j + 1]) != 0)
 			j++;
 		while(string[i][j] != '\0')
 		{
@@ -77,7 +77,7 @@ int	ft_atoi_optim(const char *nptr, int *error_flag)
 	if (num > INT_MAX || num < INT_MIN)
 		*error_flag = -1;
 		//return (-1);
-	printf("num: %ld\n", num);
+	//printf("num: %ld\n", num);
 	return ((int)num);
 }
 
@@ -109,6 +109,20 @@ int	check_duplicates(int *array, int arguments)
     return (0);
 }
 
+int	contains_num(char *string)
+{
+	int	i;
+
+	i = 0;
+	while (string[i] != '\0')
+	{
+		if (string[i] >= '0' && string[i] <= '9')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	count_and_check(int num_args, char **argv)
 {
 	int		i;
@@ -121,6 +135,8 @@ int	count_and_check(int num_args, char **argv)
 	while (i++ < num_args)
 	{
 		length = 0;
+		if (contains_num(argv[i]) == 1)
+			return (-1);
 		temp = ft_split(argv[i], ' ');
 		while (temp[length] != NULL)
 			length++;
@@ -137,7 +153,7 @@ int	count_and_check(int num_args, char **argv)
 
 // int	*parse_input (int argc, char *argv[])
 // {
-// 	int	i;
+// 	int	i;	write(1, "entra", 5);
 // 	int arguments;
 // 	int	*initial_array;
 // 	//char *char_array;
@@ -230,7 +246,6 @@ int split_and_store(char *string_argument, int **int_array, int pos)
 	while (j++ < (length - 1))
 	{
 		(*int_array)[pos] = ft_atoi_optim(temp[j], &error_flag);
-		//if ((*int_array)[pos] == -1)
 		if (error_flag == -1)
 		{
 			free_array (temp, length);

@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/15 11:09:11 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:04:37 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	count_and_check(int num_args, char **argv);
 int	find_midpoint(int size_stack);
 
 int find_max(t_stack *stack);
+
+int find_min(t_stack *stack);
 
 void push_to_b(t_stack **stack_a);
 
@@ -101,6 +103,8 @@ void sort_three(t_stack **stack_a);
 void sort_more(t_stack **stack_a);
 
 void sort_stack(t_stack **stack_a);
+
+int optimization(t_stack **stack);
 
 int check_sorted(t_stack *stack);
 

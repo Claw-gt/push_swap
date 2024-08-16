@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/16 14:46:28 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/16 15:12:42 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,15 @@ t_stack *process_stack(t_stack **stack_a, int *initial_array, int arguments)
 	while (i < arguments)
 	{
 		ft_stckadd_back(stack_a, ft_stcknew(initial_array[i]));
-		//ft_lstadd_back(stack_a, ft_lstnew(&initial_array[i]));
 		i++;
 	}
-	//(*stack_a)->next = NULL;
 	while(temp)
 	{
-		//printf("temp->content: %d\n", *(int *)temp->content);
 		printf("temp->content: %d\n", temp->content);
 		temp = temp->next;
 	}
 	quick_sort(initial_array, 0, arguments - 1);
 	stack_indexing(stack_a, initial_array);
-	//(*stack_a)->size = arguments;
-	//printf("midpoint = %d\n", check_midpoint((*stack_a)->size));
 	t_stack *check = *stack_a;
 	while(check)
 	{
@@ -82,7 +77,7 @@ int	main(int argc, char **argv)
 		printf("\ninitial_array[%d]: %d\n", i, initial_array[i]);
 		i++;
 	}
-	stack_a = NULL; //importante para evitar error con fsanitize
+	stack_a = NULL;
 	stack_a = process_stack(&stack_a, initial_array, arguments);
 	free (initial_array);
 	sort_stack(&stack_a);

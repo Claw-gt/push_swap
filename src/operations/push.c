@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../inc/push_swap.h"
 //pa
 void pa(t_stack **stack_a, t_stack **stack_b)
 {

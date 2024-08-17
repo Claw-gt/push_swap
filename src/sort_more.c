@@ -13,23 +13,23 @@
 #include "../inc/push_swap.h"
 
 //NO OPTIMIZA
-int optimization(t_stack **stack)
-{
-	t_stack	*last;
-	t_stack	*tmp;
+// int optimization(t_stack **stack)
+// {
+// 	t_stack	*last;
+// 	t_stack	*tmp;
 
-	tmp = *stack;
-	last = ft_stcklast(*stack);
-	while (tmp->next && tmp->next != last)
-    {
-        if (tmp->index > tmp->next->index)
-            return (-1);
-        tmp = tmp->next;
-    }
-	if (last->index == 1)
-		rra(stack);
-	return (0);	
-}
+// 	tmp = *stack;
+// 	last = ft_stcklast(*stack);
+// 	while (tmp->next && tmp->next != last)
+//     {
+//         if (tmp->index > tmp->next->index)
+//             return (-1);
+//         tmp = tmp->next;
+//     }
+// 	if (last->index == 1)
+// 		rra(stack);
+// 	return (0);	
+// }
 
 void optimize_rotations(int rotations, t_stack **stack)
 {

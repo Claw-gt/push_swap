@@ -64,7 +64,7 @@ int	initial_check(int argc, char **argv)
 		i++;
 	}
 	total_args = count_and_check(argc - 1, argv);
-	if (argc < 2 || total_args == -1)
+	if (total_args == -1)
 	{	
 		print_errors();
 		return (-1);
@@ -78,6 +78,8 @@ int	main(int argc, char **argv)
 	int		arguments;
 	int		*initial_array;
 
+	if (argc < 2)
+		return (0);
 	arguments = initial_check(argc, argv);
 	if (arguments == -1)
 		return (1);

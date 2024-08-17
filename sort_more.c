@@ -150,8 +150,23 @@ void sort_more(t_stack **stack_a)
 		// }
 		// printf("****************\n");
 	}
+
 	// NO OPTIMIZA
-	if (check_sorted(*stack_a) != 0)
+	// if (check_sorted(*stack_a) != 0)
+	// {
+	// 	if (stack_position(stack_a, 1) <= ft_stcksize(*stack_a) / 2)
+	// 	{
+	// 		while ((*stack_a)->index != 1)
+	// 			ra(stack_a);
+	// 	}
+	// 	else
+	// 	{
+	// 		while ((*stack_a)->index != 1)
+	// 			rra(stack_a);
+	// 	}
+	// }
+	//if (check_sorted(*stack_a) != 0)
+	if ((*stack_a)->index != 1)
 		optimize_rotations(count_moves(stack_position(stack_a, 1), ft_stcksize(*stack_a)), stack_a);
 	// while (check_sorted(*stack_a) != 0)
 	// 	rra(stack_a);

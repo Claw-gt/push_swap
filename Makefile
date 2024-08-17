@@ -16,12 +16,12 @@ LIBS = -lft #for the name of the *.a file. Here the "lib" prefix and ".a" extens
 LIBDIR = libft/
 
 MY_SOURCES = push_swap.c parsing.c operations/push.c operations/swap.c operations/rotate.c operations/reverse_rotate.c \
-			linked_stacks.c indexing.c sort_three.c sort_more.c sort.c positioning.c test.c count_moves.c
+			linked_stacks.c indexing.c sort_three.c sort_more.c sort.c positioning.c count_moves.c
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
 CC = gcc
-CFLAGS += -Wall -Wextra -Werror -fsanitize=address
+CFLAGS += -Wall -Wextra -Werror #-fsanitize=address
 #CFLAGS += -I./libft #for specifying the directory of *.h header file
 LDFLAGS = -L ./libft #for specifying the directory to be used for -l
 

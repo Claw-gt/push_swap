@@ -66,8 +66,8 @@ t_stack	*find_optim(int initial, int target, t_stack **stack_b, t_stack **stack_
 		target = target_position(stack_a, tmp_b->index);
 		tmp_b->moves_b = count_moves(initial, ft_stcksize(*stack_b));
 		tmp_b->moves_a = count_moves(target, ft_stcksize(*stack_a));
-		// printf("Moves in B: %d Moves in A: %d", tmp_b->moves_b, tmp_b->moves_a);
-		// printf("The total costs are %d\n", abs(tmp_b->moves_b) + abs(tmp_b->moves_a));
+		//printf("Moves in B: %d Moves in A: %d", tmp_b->moves_b, tmp_b->moves_a);
+		//printf("   The total costs are %d\n", abs(tmp_b->moves_b) + abs(tmp_b->moves_a));
 		if (abs(tmp_b->moves_b) + abs(tmp_b->moves_a) < lower_costs)
 		{
 			lower_costs = abs(tmp_b->moves_b) + abs(tmp_b->moves_a);

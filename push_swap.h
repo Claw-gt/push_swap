@@ -108,6 +108,8 @@ int optimization(t_stack **stack);
 
 int check_sorted(t_stack *stack);
 
+int count_moves(int position, int size_stack);
+
 t_stack	*find_optim(int initial_position, int target_position, t_stack **stack_b, t_stack **stack_a);
 
 void moves(t_stack *optim_node, t_stack **stack_a, t_stack **stack_b);

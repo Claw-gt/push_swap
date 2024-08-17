@@ -12,23 +12,41 @@
 
 #include "push_swap.h"
 
-// int optimization(t_stack **stack)
-// {
-// 	t_stack	*last;
-// 	t_stack	*tmp;
+//NO OPTIMIZA
+int optimization(t_stack **stack)
+{
+	t_stack	*last;
+	t_stack	*tmp;
 
-// 	tmp = *stack;
-// 	last = ft_stcklast(*stack);
-// 	while (tmp->next && tmp->next != last)
-//     {
-//         if (tmp->index > tmp->next->index)
-//             return (-1);
-//         tmp = tmp->next;
-//     }
-// 	if (last->index == find_min(*stack))
-// 		rra(stack);
-// 	return (0);	
-// }
+	tmp = *stack;
+	last = ft_stcklast(*stack);
+	while (tmp->next && tmp->next != last)
+    {
+        if (tmp->index > tmp->next->index)
+            return (-1);
+        tmp = tmp->next;
+    }
+	if (last->index == 1)
+		rra(stack);
+	return (0);	
+}
+
+void optimize_rotations(int rotations, t_stack **stack)
+{
+	while (rotations != 0)
+	{
+		if (rotations < 0)
+		{
+			rotations++;
+			rra(stack);
+		}
+		if (rotations > 0)
+		{
+			rotations--;
+			ra(stack);
+		}
+	}
+}
 
 int	find_midpoint(int size_stack)
 {
@@ -116,25 +134,27 @@ void sort_more(t_stack **stack_a)
 	{
 		optim_node = find_optim(initial_position, target_position, &stack_b, stack_a);
 		moves(optim_node, stack_a, &stack_b);
+		// printf("Stack A\n");
+		// tmp = *stack_a;
+		// while (tmp)
+		// {
+		// 	printf("%d pos: %d\n", tmp->index, stack_position(stack_a, tmp->index));
+		// 	tmp = tmp->next;
+		// }
+		// tmp = stack_b;
+		// printf("Stack B\n");
+		// while (tmp)
+		// {
+		// 	printf("%d pos: %d\n", tmp->index, stack_position(&stack_b, tmp->index));
+		// 	tmp = tmp->next;
+		// }
+		// printf("****************\n");
 	}
-	// printf("Stack A\n");
-	// tmp = *stack_a;
-	// while (tmp)
-    // {
-		
-    //     printf("%d pos: %d\n", tmp->index, stack_position(stack_a, tmp->index));
-    //     tmp = tmp->next;
-    // }
-	// tmp = stack_b;
-	// printf("Stack B\n");
-	// while (tmp)
-    // {
-    //     printf("%d pos: %d\n", tmp->index, stack_position(&stack_b, tmp->index));
-    //     tmp = tmp->next;
-    // }
-	// printf("****************\n");
-	while (check_sorted(*stack_a) != 0)
-		rra(stack_a);
+	// NO OPTIMIZA
+	if (check_sorted(*stack_a) != 0)
+		optimize_rotations(count_moves(stack_position(stack_a, 1), ft_stcksize(*stack_a)), stack_a);
+	// while (check_sorted(*stack_a) != 0)
+	// 	rra(stack_a);
 }
 
 

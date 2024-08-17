@@ -15,8 +15,8 @@ NAME = push_swap
 LIBS = -lft #for the name of the *.a file. Here the "lib" prefix and ".a" extension is not mentioned
 LIBDIR = libft/
 
-MY_SOURCES = push_swap.c parsing.c operations/push.c operations/swap.c operations/rotate.c operations/reverse_rotate.c \
-			linked_stacks.c indexing.c sort_three.c sort_more.c sort.c positioning.c count_moves.c
+MY_SOURCES = src/push_swap.c src/parsing.c src/operations/push.c src/operations/swap.c src/operations/rotate.c src/operations/reverse_rotate.c \
+			src/linked_stacks.c src/indexing.c src/sort_three.c src/sort_more.c src/sort.c src/positioning.c src/count_moves.c
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

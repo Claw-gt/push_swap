@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:11:42 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/19 16:23:28 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 16:49:35 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int count_moves(int position, int size_stack)
 		moves = position - size_stack; //moves es negativo -> reverse rotate
     return (moves);
 }
+
 int count_optim_moves(int moves_b, int moves_a)
 {
 	int	rot_a;
@@ -59,7 +60,7 @@ int abs(int num)
 	return (num);
 }
 
-t_stack	*find_optim(int initial, int target, t_stack **stack_b, t_stack **stack_a)
+t_stack	*find_optim(int init, int target, t_stack **stack_b, t_stack **stack_a)
 {
 	t_stack     *cheapest;
 	int			lower_costs;
@@ -67,17 +68,15 @@ t_stack	*find_optim(int initial, int target, t_stack **stack_b, t_stack **stack_
 
 	tmp_b = *stack_b;
 	cheapest = *stack_b;
-	(*stack_b)->moves_b = count_moves(initial, ft_stcksize(*stack_b));
+	(*stack_b)->moves_b = count_moves(init, ft_stcksize(*stack_b));
 	(*stack_b)->moves_a = count_moves(target, ft_stcksize(*stack_a));
 	lower_costs = count_optim_moves((*stack_b)->moves_b, (*stack_b)->moves_a);
 	while (tmp_b)
 	{
-		initial = stack_position(stack_b, tmp_b->index);
+		init = stack_position(stack_b, tmp_b->index);
 		target = target_position(stack_a, tmp_b->index);
-		tmp_b->moves_b = count_moves(initial, ft_stcksize(*stack_b));
+		tmp_b->moves_b = count_moves(init, ft_stcksize(*stack_b));
 		tmp_b->moves_a = count_moves(target, ft_stcksize(*stack_a));
-		//printf("Moves in B: %d Moves in A: %d", tmp_b->moves_b, tmp_b->moves_a);
-		//printf("   The total costs are %d\n", count_optim_moves(tmp_b->moves_b, tmp_b->moves_a));
 		if (count_optim_moves(tmp_b->moves_b, tmp_b->moves_a) < lower_costs)
 		{
 			lower_costs = count_optim_moves(tmp_b->moves_b, tmp_b->moves_a);
@@ -85,8 +84,6 @@ t_stack	*find_optim(int initial, int target, t_stack **stack_b, t_stack **stack_
 		}
 		tmp_b = tmp_b->next;
 	}
-	//printf("\nThe optim node is %d\n", cheapest->index);
-	//return (abs(moves_b) + abs(moves_a));
 	return (cheapest);
 }
 

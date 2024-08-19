@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/16 18:57:50 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:05:07 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,32 +45,7 @@ t_stack *process_stack(t_stack **stack_a, int *initial_array, int arguments)
 	return (*stack_a);
 }
 
-int	initial_check(int argc, char **argv)
-{
-	int	total_args;
-	int	i;
-	int	j;
 
-	j = 0;
-	i = 1;
-	total_args = 0;
-	while (i < argc)
-	{
-		if (argv[i][j] == '\0')
-		{
-			print_errors();
-			return (-1);
-		}
-		i++;
-	}
-	total_args = count_and_check(argc - 1, argv);
-	if (total_args == -1)
-	{	
-		print_errors();
-		return (-1);
-	}
-	return (total_args);
-}
 
 int	main(int argc, char **argv)
 {

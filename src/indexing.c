@@ -3,59 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   indexing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:30:53 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/05 13:02:12 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:14:54 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-//implementar QuickSort
-int partition(int *array, int low, int high)
+int	partition(int *array, int low, int high)
 {
-    int pivot;
-    int i;
-    int j;
-    int tmp;
+	int	pivot;
+	int	i;
+	int	j;
+	int	tmp;
 
-    pivot = array[high];
-    i = low - 1;
-    j = low;
-    while (j < high)
-    {
-        if (array[j] <= pivot)
-        {
-            i++;
-            tmp = array[i];
-            array[i] = array[j];
-            array[j] = tmp;
-        }
-        j++;
-    }
-    tmp = array[i + 1];
-    array[i + 1] = array[high];
-    array[high] = tmp;
-    return (i + 1);
+	pivot = array[high];
+	i = low - 1;
+	j = low;
+	while (j < high)
+	{
+		if (array[j] <= pivot)
+		{
+			i++;
+			tmp = array[i];
+			array[i] = array[j];
+			array[j] = tmp;
+		}
+		j++;
+	}
+	tmp = array[i + 1];
+	array[i + 1] = array[high];
+	array[high] = tmp;
+	return (i + 1);
 }
 
-void quick_sort(int *array, int low, int high)
+void	quick_sort(int *array, int low, int high)
 {
-    int pi;
+	int	pi;
 
-    pi = 0;
-    if (low < high)
-    {
-        pi = partition(array, low, high);
-        quick_sort(array, low, pi - 1);
-        quick_sort(array, pi + 1, high);
-    }
+	pi = 0;
+	if (low < high)
+	{
+		pi = partition(array, low, high);
+		quick_sort(array, low, pi - 1);
+		quick_sort(array, pi + 1, high);
+	}
 }
 
-int find_number(int *array, int number)
+int	find_number(int *array, int number)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i] != number)
@@ -63,14 +62,14 @@ int find_number(int *array, int number)
 	return (++i);
 }
 
-void stack_indexing(t_stack **stack, int *array)
+void	stack_indexing(t_stack **stack, int *array)
 {
-    t_stack *tmp;
+	t_stack	*tmp;
 
-    tmp = *stack;
-    while (tmp)
-    {
+	tmp = *stack;
+	while (tmp)
+	{
 		tmp->index = find_number(array, tmp->content);
-        tmp = tmp->next;
-    }
+		tmp = tmp->next;
+	}
 }

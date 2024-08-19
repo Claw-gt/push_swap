@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clagarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:25:33 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/08 16:05:26 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 16:29:24 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
+void print_stacks (t_stack **stack_a, t_stack **stack_b)
+{
+    
+}
 
 void test_operations(t_stack **stack)
 {

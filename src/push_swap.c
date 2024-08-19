@@ -6,11 +6,22 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/19 17:55:52 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 18:16:34 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
+void	leaks(void)
+{
+	system("leaks -q a.out");
+}
+
+void	*print_errors(void)
+{
+	write(1, "Error\n", 6);
+	return (NULL);
+}
 
 t_stack	*process_stack(t_stack **stack_a, int *initial_array, int arguments)
 {

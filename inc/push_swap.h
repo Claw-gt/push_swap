@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/19 17:30:40 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 18:18:15 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,12 @@ void	sort_more(t_stack **stack_a);
 void	sort_stack(t_stack **stack_a);
 
 int		check_sorted(t_stack *stack);
+
+int		str_isdigit(char **string, int arguments);
+
+int		ft_atoi_optim(const char *nptr, int *error_flag);
+
+int		contains_num(char *string);
 
 int		count_moves(int position, int size_stack);
 

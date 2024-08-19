@@ -6,13 +6,13 @@
 #    By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 19:23:32 by clagarci          #+#    #+#              #
-#    Updated: 2024/08/19 17:58:11 by clagarci         ###   ########.fr        #
+#    Updated: 2024/08/19 18:03:25 by clagarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-LIBS = -lft #for the name of the *.a file. Here the "lib" prefix and ".a" extension is not mentioned
+LIBS = -lft
 LIBDIR = libft/
 
 MY_SOURCES = src/push_swap.c src/parsing.c src/operations/push.c src/operations/swap.c src/operations/rotate.c src/operations/reverse_rotate.c \
@@ -22,8 +22,7 @@ MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
 CC = gcc
 CFLAGS += -Wall -Wextra -Werror -fsanitize=address
-#CFLAGS += -I./libft #for specifying the directory of *.h header file
-LDFLAGS = -L ./libft #for specifying the directory to be used for -l
+LDFLAGS = -L ./libft
 
 GREEN = \033[0;32m
 RED = \033[0;31m
@@ -35,10 +34,6 @@ $(NAME): $(MY_OBJECTS)
 		make bonus -C $(LIBDIR)
 		$(CC) $(CFLAGS) $(MY_OBJECTS) -o $(NAME) $(LDFLAGS) $(LIBS)
 		@echo "\n Compilation of $(NAME):  $(GREEN)SUCCESS!"
-
-#$(LIBDIR)/libft.a:
-#		make -C $(LIBDIR) --no-print-directory
-#		@echo "\n Compilation of $(LIBDIR): SUCCESS!"
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c -o $@ $<

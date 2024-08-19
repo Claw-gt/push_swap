@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:04:45 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/15 12:41:02 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 16:14:34 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ void sort_three(t_stack **stack_a)
         return ;
     if (max == (*stack_a)->index)
     {
-        ra(stack_a);
+        ra(stack_a, 0);
         if (check_sorted(*stack_a) == -1)
             sa(stack_a);
     }
     else if (max == (*stack_a)->next->index)
     {
-        rra(stack_a);
+        rra(stack_a, 0);
         if (check_sorted(*stack_a) == -1)
             sa(stack_a);
     }

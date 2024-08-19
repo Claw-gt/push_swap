@@ -6,30 +6,11 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:46:55 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/16 18:11:04 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 16:25:03 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-
-//NO OPTIMIZA
-// int optimization(t_stack **stack)
-// {
-// 	t_stack	*last;
-// 	t_stack	*tmp;
-
-// 	tmp = *stack;
-// 	last = ft_stcklast(*stack);
-// 	while (tmp->next && tmp->next != last)
-//     {
-//         if (tmp->index > tmp->next->index)
-//             return (-1);
-//         tmp = tmp->next;
-//     }
-// 	if (last->index == 1)
-// 		rra(stack);
-// 	return (0);	
-// }
 
 void optimize_rotations(int rotations, t_stack **stack)
 {
@@ -38,23 +19,14 @@ void optimize_rotations(int rotations, t_stack **stack)
 		if (rotations < 0)
 		{
 			rotations++;
-			rra(stack);
+			rra(stack, 0);
 		}
 		if (rotations > 0)
 		{
 			rotations--;
-			ra(stack);
+			ra(stack, 0);
 		}
 	}
-}
-
-int	find_midpoint(int size_stack)
-{
-	int	midpoint;
-
-	midpoint = 0;
-	midpoint = size_stack / 2 + 1;
-	return (midpoint);
 }
 
 int	lower_half(t_stack *stack, int middle)
@@ -78,13 +50,13 @@ void push_until_three(t_stack **stack_a, t_stack **stack_b, int size)
 
 	midpoint = 0;
 	tmp = *stack_a;
-	midpoint = find_midpoint(size);
+	midpoint = size / 2 + 1;
 	while (tmp && lower_half(*stack_a, midpoint) != -1 && ft_stcksize(*stack_a) > 3) //iterar por los nodos mientras haya alguno que cumpla la condición
 	{
 		if (tmp->index <= midpoint && tmp->index <= (size - 3))
 			pb(stack_a, stack_b);	
 		else
-			ra(stack_a);
+			ra(stack_a, 0);
 		tmp = *stack_a;
 	}
 	while (tmp && ft_stcksize(*stack_a) > 3)
@@ -92,25 +64,19 @@ void push_until_three(t_stack **stack_a, t_stack **stack_b, int size)
 		if (tmp->index <= (size - 3))
 			pb(stack_a, stack_b);
 		else
-			ra(stack_a);
+			ra(stack_a, 0);
 		tmp = *stack_a;
-	}
-	
+	}	
 }
 
 void sort_more(t_stack **stack_a)
 {
 	t_stack	*stack_b;
-	//t_stack	*tmp;
 	t_stack	*optim_node;
 	int		total_args;
-	int		initial_position;
-	int		target_position;
 
 	stack_b = NULL;
 	total_args = 0;
-	initial_position = 0;
-	target_position = 0;
 	total_args = ft_stcksize(*stack_a);
 	push_until_three(stack_a, &stack_b, total_args);
 	sort_three(stack_a);
@@ -132,14 +98,14 @@ void sort_more(t_stack **stack_a)
 	// printf("****************\n");
 	while (stack_b)
 	{
-		optim_node = find_optim(initial_position, target_position, &stack_b, stack_a);
+		optim_node = find_optim(stack_position(&stack_b, stack_b->index), target_position(stack_a, stack_b->index), &stack_b, stack_a);
 		moves(optim_node, stack_a, &stack_b);
 		// printf("Stack A\n");
 		// tmp = *stack_a;
 		// while (tmp)
 		// {
 		// 	printf("%d pos: %d\n", tmp->index, stack_position(stack_a, tmp->index));
-		// 	tmp = tmp->next;
+		// 	tmp = tmp->next;s
 		// }
 		// tmp = stack_b;
 		// printf("Stack B\n");
@@ -166,6 +132,7 @@ void sort_more(t_stack **stack_a)
 	// 	}
 	// }
 	//if (check_sorted(*stack_a) != 0)
+	//printf("\nSize of Stack A: %d \nPosition of index 1: %d", ft_stcksize(*stack_a), stack_position(stack_a, 1));
 	if ((*stack_a)->index != 1)
 		optimize_rotations(count_moves(stack_position(stack_a, 1), ft_stcksize(*stack_a)), stack_a);
 	// while (check_sorted(*stack_a) != 0)

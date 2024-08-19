@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:25:57 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/19 17:05:55 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:58:01 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,6 @@ int	ft_atoi_optim(const char *nptr, int *error_flag)
 	if (num > INT_MAX || num < INT_MIN)
 		*error_flag = -1;
 	return ((int)num);
-}
-
-void	*print_errors(void)
-{
-	write(1, "Error\n", 6);
-	return (NULL);
 }
 
 int	check_duplicates(int *array, int arguments)

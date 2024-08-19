@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:11:42 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/19 18:14:33 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 18:27:49 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,25 @@ t_stack	*find_optim(int init, int target, t_stack **stack_b, t_stack **stack_a)
 		tmp_b = tmp_b->next;
 	}
 	return (cheapest);
+}
+
+void	join_moves(int *moves_a, int *moves_b, t_stack **stack_a,  t_stack **stack_b)
+{
+	if (*moves_b > 0 && *moves_a > 0)
+	{
+		rr(stack_a, stack_b);
+		(*moves_b)--;
+		(*moves_a)--;
+		return (1);
+	}
+	else if (*moves_b < 0 && *moves_a < 0)
+	{
+		rrr(stack_a, stack_b);
+		(*moves_b)++;
+		(*moves_b)++;
+		return (1);
+	}
+	return (0);
 }
 
 void	moves(t_stack *optim_node, t_stack **stack_a, t_stack **stack_b)

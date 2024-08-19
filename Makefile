@@ -6,7 +6,7 @@
 #    By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 19:23:32 by clagarci          #+#    #+#              #
-#    Updated: 2024/08/16 14:43:14 by clagarci         ###   ########.fr        #
+#    Updated: 2024/08/19 17:58:11 by clagarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,12 @@ LIBS = -lft #for the name of the *.a file. Here the "lib" prefix and ".a" extens
 LIBDIR = libft/
 
 MY_SOURCES = src/push_swap.c src/parsing.c src/operations/push.c src/operations/swap.c src/operations/rotate.c src/operations/reverse_rotate.c \
-			src/linked_stacks.c src/indexing.c src/sorting/sort_three.c src/sorting/sort_more.c src/sorting/sort.c src/positioning.c src/count_moves.c
+			src/linked_stacks.c src/utils.c src/indexing.c src/sorting/sort_three.c src/sorting/sort_more.c src/sorting/sort.c src/positioning.c src/count_moves.c
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
 CC = gcc
-CFLAGS += -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS += -Wall -Wextra -Werror -fsanitize=address
 #CFLAGS += -I./libft #for specifying the directory of *.h header file
 LDFLAGS = -L ./libft #for specifying the directory to be used for -l
 

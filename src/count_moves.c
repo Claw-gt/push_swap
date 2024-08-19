@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_moves.c                                      :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:11:42 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/19 16:49:35 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:54:07 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-// void join_moves(t_stack **stack_a, t_stack **stack_b, int moves_a, int moves_b)
-// {
-// 	if ((*moves_a > 0 && *moves_b > 0))
-// 		rr(stack_a, stack_b);
-// 	else if (((*moves_a < 0 && *moves_b < 0)))
-// 		rrr(stack_a, stack_b);
-// }
-
-int count_moves(int position, int size_stack)
+int	count_moves(int position, int size_stack)
 {
-    int 	moves;
+	int	moves;
 
-    moves = 0;
+	moves = 0;
 	if ((position) <= (size_stack / 2))
-		moves = position; //moves es positivo -> rotate
+		moves = position;
 	else
-		moves = position - size_stack; //moves es negativo -> reverse rotate
-    return (moves);
+		moves = position - size_stack;
+	return (moves);
 }
 
-int count_optim_moves(int moves_b, int moves_a)
+int	count_optim_moves(int moves_b, int moves_a)
 {
 	int	rot_a;
 	int	rot_b;
@@ -53,18 +45,11 @@ int count_optim_moves(int moves_b, int moves_a)
 	return (total_moves);
 }
 
-int abs(int num)
-{
-	if (num < 0)
-		num *= -1;
-	return (num);
-}
-
 t_stack	*find_optim(int init, int target, t_stack **stack_b, t_stack **stack_a)
 {
-	t_stack     *cheapest;
-	int			lower_costs;
-	t_stack		*tmp_b;
+	t_stack	*cheapest;
+	int		lower_costs;
+	t_stack	*tmp_b;
 
 	tmp_b = *stack_b;
 	cheapest = *stack_b;
@@ -87,7 +72,7 @@ t_stack	*find_optim(int init, int target, t_stack **stack_b, t_stack **stack_a)
 	return (cheapest);
 }
 
-void moves(t_stack *optim_node, t_stack **stack_a, t_stack **stack_b)
+void	moves(t_stack *optim_node, t_stack **stack_a, t_stack **stack_b)
 {
 	while (optim_node->moves_b != 0 || optim_node->moves_a != 0)
 	{
@@ -96,13 +81,13 @@ void moves(t_stack *optim_node, t_stack **stack_a, t_stack **stack_b)
 			rr(stack_a, stack_b);
 			optim_node->moves_b--;
 			optim_node->moves_a--;
-		}	
+		}
 		else if (optim_node->moves_b < 0 && optim_node->moves_a < 0)
 		{
 			rrr(stack_a, stack_b);
 			optim_node->moves_b++;
 			optim_node->moves_a++;
-		}	
+		}
 		else if (optim_node->moves_b > 0)
 		{
 			rb(stack_b, 0);

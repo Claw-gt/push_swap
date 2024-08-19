@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/19 18:16:34 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 18:19:49 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,5 @@ int	main(int argc, char **argv)
 	stack_a = process_stack(&stack_a, initial_array, arguments);
 	free (initial_array);
 	sort_stack(&stack_a);
-	//atexit (leaks);
 	return (0);
 }

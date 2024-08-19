@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/16 18:04:37 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/19 16:22:20 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,15 @@ void pa(t_stack **stack_a, t_stack **stack_b);
 
 void pb(t_stack **stack_a, t_stack **stack_b);
 
-void ra(t_stack **stack_a);
+void ra(t_stack **stack_a, int duplicate);
 
-void rb(t_stack **stack_b);
+void rb(t_stack **stack_b, int duplicate);
 
 void rr(t_stack **stack_a, t_stack **stack_b);
 
-void rra(t_stack **stack_a);
+void rra(t_stack **stack_a, int duplicate);
 
-void rrb(t_stack **stack_b);
+void rrb(t_stack **stack_b, int duplicate);
 
 void rrr(t_stack **stack_a, t_stack **stack_b);
 
@@ -110,7 +110,7 @@ int check_sorted(t_stack *stack);
 
 int count_moves(int position, int size_stack);
 
-t_stack	*find_optim(int initial_position, int target_position, t_stack **stack_b, t_stack **stack_a);
+t_stack	*find_optim(int initial, int target, t_stack **stack_b, t_stack **stack_a);
 
 void moves(t_stack *optim_node, t_stack **stack_a, t_stack **stack_b);
 #endif

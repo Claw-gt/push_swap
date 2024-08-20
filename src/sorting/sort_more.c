@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:46:55 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/19 17:58:33 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/20 13:14:23 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	sort_more(t_stack **stack_a)
 		optim_node = find_optim(initial, target, &stack_b, stack_a);
 		moves(optim_node, stack_a, &stack_b);
 	}
-	//if (check_sorted(*stack_a) != 0)
 	size = ft_stcksize(*stack_a);
 	if ((*stack_a)->index != 1)
 		optim_rotations(count_moves(stack_position(stack_a, 1), size), stack_a);

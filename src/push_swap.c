@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/20 14:58:53 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/20 17:29:29 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ int	main(int argc, char **argv)
 	stack_a = process_stack(&stack_a, initial_array, arguments);
 	free (initial_array);
 	sort_stack(&stack_a);
+	if (DEBUG == 1)
+		print_stack(&stack_a);
+	ft_stckclear(&stack_a);
 	return (0);
 }

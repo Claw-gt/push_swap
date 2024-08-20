@@ -6,16 +6,18 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:17:30 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/19 18:18:15 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/20 17:30:42 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 # include <stdlib.h>
 # include <stddef.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <limits.h>
 # include "../libft/libft.h"
 
@@ -37,8 +39,6 @@ int		initial_check(int argc, char **argv);
 int		count_and_check(int num_args, char **argv);
 
 int		find_max(t_stack *stack);
-
-void	push_to_b(t_stack **stack_a);
 
 void	sort_stack(t_stack **stack_a);
 
@@ -109,4 +109,6 @@ t_stack	*find_optim(int init, int target, t_stack **stack_b, t_stack **stack_a);
 void	moves(t_stack *optim_node, t_stack **stack_a, t_stack **stack_b);
 
 void	*free_array(char **arr, int num);
+
+void	print_stack(t_stack **stack_a);
 #endif

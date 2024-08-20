@@ -6,7 +6,7 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:25:57 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/19 18:17:13 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/20 17:17:17 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	count_and_check(int num_args, char **argv)
 			return (-1);
 		}
 		arguments += length;
-		free_array (temp, length);
+		free_array(temp, length);
 	}
 	return (arguments);
 }
@@ -79,7 +79,7 @@ int	split_and_store(char *string_argument, int **int_array, int pos)
 		(*int_array)[pos] = ft_atoi_optim(temp[j], &error_flag);
 		if (error_flag == -1)
 		{
-			free_array (temp, length);
+			free_array(temp, length);
 			free (*int_array);
 			return (-1);
 		}

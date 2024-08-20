@@ -6,7 +6,7 @@
 #    By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 19:23:32 by clagarci          #+#    #+#              #
-#    Updated: 2024/08/20 13:03:09 by clagarci         ###   ########.fr        #
+#    Updated: 2024/08/20 14:42:07 by clagarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,14 +41,11 @@ $(NAME): $(MY_OBJECTS)
 
 clean:
 	rm -f $(MY_OBJECTS)
-	@echo "\nObjects files of push_swap deleted!"
-	@make clean -C libft --no-print-directory
-	@echo "\nObjects files of libft deleted!"
+	@make clean -C libft
 
 fclean: clean
 	rm -f $(NAME)
-	@echo "\n$(NAME) deleted!"
-	@make fclean -C libft --no-print-directory
+	@make fclean -C libft
 
 re: fclean all
 

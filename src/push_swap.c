@@ -6,11 +6,16 @@
 /*   By: clagarci <clagarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:10:25 by clagarci          #+#    #+#             */
-/*   Updated: 2024/08/20 17:29:29 by clagarci         ###   ########.fr       */
+/*   Updated: 2024/08/27 13:41:13 by clagarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
+void	leaks(void)
+{
+	system("leaks -q push_swap");
+}
 
 void	*print_errors(void)
 {

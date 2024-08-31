@@ -12,3 +12,4 @@
 |--| :--------: | :------: |
 | Average Movements | 572 | 4558 |
 
+![Alt Text](https://github.com/Claw-gt/push_swap/blob/main/Push_swap_Visualizer.gif)

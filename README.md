@@ -10,8 +10,9 @@
 | [Visualizer](https://github.com/o-reo/push_swap_visualizer) | `o-reo` |
 
 ### Result
-|| 100 random numbers | 500 random numbers |
-|--| :--------: | :------: |
-| Average Movements | 572 | 4558 |
 
 ![Alt Text](https://github.com/Claw-gt/push_swap/blob/main/Push_swap_Visualizer-ezgif.com-resize.gif)
+
+|| 100 random numbers | 500 random numbers |
+|--| :--------: | :------: |
+| **Average Movements** | `572` | `4558` |

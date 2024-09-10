@@ -24,7 +24,7 @@ What is your goal? Write a C program called push_swap. The program will calculat
 
 ### Result
 
-![Alt Text](https://github.com/Claw-gt/push_swap/blob/main/Push_swap_Visualizer-ezgif.com-resize.gif)
+![Alt Text](https://github.com/Claw-gt/push_swap/blob/main/push_swap_visualizer.gif)
 
 <div align="center">
   

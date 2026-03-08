@@ -130,17 +130,13 @@ This will generate:
 
 ---
 
-👤 Author
+## 👤 Author
 
 **clagarci**
 
 42 Student
 
-📜 License
+## 📜 License
 
 This project is developed for educational purposes as part of the **42 School** curriculum.
 
-## Introduction
-Push_swap is a simple and very effective algorithm project, where you have to sort data.
-You have at your disposal a set of integer values, 2 stacks and a set of instructions to manipulate both stacks.
-What is your goal? Write a C program called push_swap. The program will calculate and display in the standard output the smallest program, created with the Push swap language instructions, that sorts the integers received as arguments.
